@@ -18755,6 +18755,9 @@ void TASKS_LIST_50MS( void );
 
 
 void TASKS_LIST_100MS( void );
+
+
+void TASKS_LIST_button( void );
 # 17 "C:\\Docs\\SAMV7x\\SAMV71x\\app\\01_scheduler_\\src\\Services\\Scheduler\\app_tasks.c" 2
 # 32 "C:\\Docs\\SAMV7x\\SAMV71x\\app\\01_scheduler_\\src\\Services\\Scheduler\\app_tasks.c"
 void TASKS_LIST_1MS( void )
@@ -18777,4 +18780,7 @@ void TASKS_LIST_50MS( void )
 {;}
 
 void TASKS_LIST_100MS( void )
+{;}
+
+void TASKS_LIST_button( void )
 {;}

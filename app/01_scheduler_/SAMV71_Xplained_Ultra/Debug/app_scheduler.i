@@ -18776,6 +18776,7 @@ typedef enum
     TASKS_10_MS,
     TASKS_50_MS,
     TASKS_100_MS,
+    TASKS_button,
     TASK_NULL,
 }tSchedulerTasks_ID;
 
@@ -18787,7 +18788,17 @@ typedef struct
     uint8_t u8Priority;
 
 }tSchedulingTask;
-# 56 "C:\\Docs\\SAMV7x\\SAMV71x\\app\\01_scheduler_\\src\\Services\\Scheduler\\app_scheduler.h"
+
+
+
+
+
+
+#define ENABLE_OL_VERIFICATION 0
+#define ENABLE_PRIOTEST 1
+#define MAX_PRIO 5
+
+
 #define TASK_SCHEDULER_INIT 0x00u
 #define TASK_SCHEDULER_RUNNING 0x01u
 #define TASK_SCHEDULER_OVERLOAD_1MS 0x02u
@@ -18795,13 +18806,13 @@ typedef struct
 #define TASK_SCHEDULER_OVERLOAD_2MS_B 0x04u
 #define TASK_SCHEDULER_HALTED 0xAAu
 
-#define TASK_SCH_MAX_NUMBER_TIME_TASKS 0x06u
+#define TASK_SCH_MAX_NUMBER_TIME_TASKS 0x07u
 
 #define TASK_SCHEDULER_BASE_FREQ 2000
 
 
 
-extern tSchedulingTask TimeTriggeredTasks[0x06u];
+extern tSchedulingTask TimeTriggeredTasks[0x07u];
 
 
 
@@ -18853,6 +18864,9 @@ void TASKS_LIST_50MS( void );
 
 
 void TASKS_LIST_100MS( void );
+
+
+void TASKS_LIST_button( void );
 # 17 "C:\\Docs\\SAMV7x\\SAMV71x\\app\\01_scheduler_\\src\\Services\\Scheduler\\app_scheduler.c" 2
 
 # 1 "C:\\Docs\\SAMV7x\\SAMV71x\\app\\01_scheduler_\\src\\MCAL\\SysTick/systick.h" 1
@@ -18879,16 +18893,18 @@ __attribute__ ((aligned (1))) uint8_t u8_50ms_Counter;
 __attribute__ ((aligned (1))) uint8_t u8_100ms_Counter;
 
 
-tSchedulingTask TimeTriggeredTasks[0x06u] =
+tSchedulingTask TimeTriggeredTasks[0x07u] =
 {
-    {TASKS_1_MS, TASKS_LIST_1MS, SUSPENDED, 5},
-    {TASKS_2_MS_A,TASKS_LIST_2MS_A,SUSPENDED, 4},
-    {TASKS_2_MS_B,TASKS_LIST_2MS_B,SUSPENDED, 4},
-    {TASKS_10_MS, TASKS_LIST_10MS, SUSPENDED, 3},
-    {TASKS_50_MS, TASKS_LIST_50MS, SUSPENDED, 2},
-    {TASKS_100_MS,TASKS_LIST_100MS,SUSPENDED, 1},
+
+    { TASKS_1_MS, TASKS_LIST_1MS, SUSPENDED, 5 },
+    { TASKS_2_MS_A, TASKS_LIST_2MS_A, SUSPENDED, 4 },
+    { TASKS_2_MS_B, TASKS_LIST_2MS_B, SUSPENDED, 4 },
+    { TASKS_10_MS, TASKS_LIST_10MS, SUSPENDED, 3 },
+    { TASKS_50_MS, TASKS_LIST_50MS, SUSPENDED, 2 },
+    { TASKS_100_MS, TASKS_LIST_100MS, SUSPENDED, 1 },
+    { TASKS_button, TASKS_LIST_button, SUSPENDED, 4 },
 };
-# 55 "C:\\Docs\\SAMV7x\\SAMV71x\\app\\01_scheduler_\\src\\Services\\Scheduler\\app_scheduler.c"
+# 56 "C:\\Docs\\SAMV7x\\SAMV71x\\app\\01_scheduler_\\src\\Services\\Scheduler\\app_scheduler.c"
 void vfnScheduler_Callback(void);
 # 69 "C:\\Docs\\SAMV7x\\SAMV71x\\app\\01_scheduler_\\src\\Services\\Scheduler\\app_scheduler.c"
 void vfnScheduler_Init(void)
@@ -18939,102 +18955,57 @@ void vfnScheduler_TaskActivate( tSchedulingTask * Task )
 void vfnTask_Scheduler(void)
 {
 
+    _Bool lboolRunTaskPrev_Flag = 0;
+    _Bool lboolRunTask_Flag = 0;
+    __attribute__ ((aligned (1))) uint8_t lu8TaskToRun_Id = 0;
+    __attribute__ ((aligned (1))) uint8_t lu8Task_Id;
+
+    for(lu8Task_Id = 0; lu8Task_Id<0x07u; lu8Task_Id++){
+
+        if (TimeTriggeredTasks[lu8Task_Id].enTaskState == READY){
 
 
+            lboolRunTaskPrev_Flag = lboolRunTask_Flag;
+            lboolRunTask_Flag = 1;
 
 
+            if (TimeTriggeredTasks[lu8Task_Id].u8Priority == 5){
+                lu8TaskToRun_Id = lu8Task_Id;
+                break;
+            }
+            else{
 
-    if( ( TaskScheduler_Task_ID_Activated == TASKS_1_MS )
-         || ( TaskScheduler_Task_ID_Activated == TASKS_100_MS ) )
-    {
 
-        TasksScheduler_Task_ID_Backup = TaskScheduler_Task_ID_Activated;
+                if (lboolRunTaskPrev_Flag == 0){
+                    lu8TaskToRun_Id = lu8Task_Id;
+                }
+                else{
 
-        vfnScheduler_TaskStart (&TimeTriggeredTasks[TASKS_1_MS]);
-        if( TaskScheduler_Task_ID_Activated == TASKS_100_MS )
-        {
-            vfnScheduler_TaskStart (&TimeTriggeredTasks[TASKS_100_MS]);
-        }
+                    if (TimeTriggeredTasks[lu8Task_Id].u8Priority > TimeTriggeredTasks[lu8TaskToRun_Id].u8Priority){
 
-        if( TasksScheduler_Task_ID_Backup == TaskScheduler_Task_ID_Activated )
-        {
+                        lu8TaskToRun_Id = lu8Task_Id;
+                    }
+                }
 
-            TaskScheduler_Task_ID_Activated = TASK_NULL;
-        }
-        else
-        {
-            gu8Scheduler_Status = 0x02u;
+
+            }
         }
     }
-    else
-    {
 
 
+    if (lboolRunTask_Flag){
 
 
-
-
-        if( ( TaskScheduler_Task_ID_Activated == TASKS_2_MS_A )
-             || ( TaskScheduler_Task_ID_Activated == TASKS_50_MS ) )
-        {
-
-            TasksScheduler_Task_ID_Backup = TaskScheduler_Task_ID_Activated;
-
-            vfnScheduler_TaskStart (&TimeTriggeredTasks[TASKS_2_MS_A]);
-            if( TaskScheduler_Task_ID_Activated == TASKS_50_MS )
-            {
-                vfnScheduler_TaskStart (&TimeTriggeredTasks[TASKS_50_MS]);
-            }
-
-            if( TasksScheduler_Task_ID_Backup == TaskScheduler_Task_ID_Activated )
-            {
-
-                TaskScheduler_Task_ID_Activated = TASK_NULL;
-            }
-            else
-            {
-                gu8Scheduler_Status = 0x03u;
-            }
-        }
-        else
-        {
-
-
-
-
-
-
-            if( ( TaskScheduler_Task_ID_Activated == TASKS_2_MS_B )
-                 || ( TaskScheduler_Task_ID_Activated == TASKS_10_MS ) )
-            {
-
-                TasksScheduler_Task_ID_Backup = TaskScheduler_Task_ID_Activated;
-
-                vfnScheduler_TaskStart (&TimeTriggeredTasks[TASKS_2_MS_B]);
-                if( TaskScheduler_Task_ID_Activated == TASKS_10_MS )
-                {
-                    vfnScheduler_TaskStart (&TimeTriggeredTasks[TASKS_10_MS]);
-                }
-
-                if( TasksScheduler_Task_ID_Backup == TaskScheduler_Task_ID_Activated )
-                {
-
-                    TaskScheduler_Task_ID_Activated = TASK_NULL;
-                }
-                else
-                {
-                    gu8Scheduler_Status = 0x04u;
-                }
-            }
-        }
+        vfnScheduler_TaskStart (&TimeTriggeredTasks[lu8TaskToRun_Id]);
+# 223 "C:\\Docs\\SAMV7x\\SAMV71x\\app\\01_scheduler_\\src\\Services\\Scheduler\\app_scheduler.c"
     }
 }
-# 273 "C:\\Docs\\SAMV7x\\SAMV71x\\app\\01_scheduler_\\src\\Services\\Scheduler\\app_scheduler.c"
+# 245 "C:\\Docs\\SAMV7x\\SAMV71x\\app\\01_scheduler_\\src\\Services\\Scheduler\\app_scheduler.c"
 void vfnScheduler_Callback(void)
 {
 
     gu8Scheduler_Counter++;
-# 285 "C:\\Docs\\SAMV7x\\SAMV71x\\app\\01_scheduler_\\src\\Services\\Scheduler\\app_scheduler.c"
+# 257 "C:\\Docs\\SAMV7x\\SAMV71x\\app\\01_scheduler_\\src\\Services\\Scheduler\\app_scheduler.c"
     if( ( gu8Scheduler_Counter & 0x01u ) == 0x01u )
     {
         u8_100ms_Counter++;
@@ -19049,6 +19020,10 @@ void vfnScheduler_Callback(void)
         else
         {
             vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_1_MS]);
+
+            vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_button]);
+
+
         }
     }
     else
@@ -19091,6 +19066,9 @@ void vfnScheduler_Callback(void)
                 if( u8_10ms_Counter >= 5u )
                 {
                     vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_10_MS]);
+
+                    vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_button]);
+
                     u8_10ms_Counter = 0u;
                 }
 

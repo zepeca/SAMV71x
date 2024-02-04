@@ -49,5 +49,8 @@ void TASKS_LIST_50MS( void );
 /* List of tasks to be executed @ 100ms */
 void TASKS_LIST_100MS( void );
 
+/* carlosa List of tasks to be executed @ button */
+void TASKS_LIST_button( void );
+
 /*============================================================================*/
 #endif /*__APP_TASKS */

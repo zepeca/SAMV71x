@@ -26799,6 +26799,7 @@ typedef enum
     TASKS_10_MS,
     TASKS_50_MS,
     TASKS_100_MS,
+    TASKS_button,
     TASK_NULL,
 }tSchedulerTasks_ID;
 
@@ -26810,7 +26811,17 @@ typedef struct
     uint8_t u8Priority;
 
 }tSchedulingTask;
-# 56 "C:\\Docs\\SAMV7x\\SAMV71x\\app\\01_scheduler_\\src\\Services\\Scheduler/app_scheduler.h"
+
+
+
+
+
+
+#define ENABLE_OL_VERIFICATION 0
+#define ENABLE_PRIOTEST 1
+#define MAX_PRIO 5
+
+
 #define TASK_SCHEDULER_INIT 0x00u
 #define TASK_SCHEDULER_RUNNING 0x01u
 #define TASK_SCHEDULER_OVERLOAD_1MS 0x02u
@@ -26818,13 +26829,13 @@ typedef struct
 #define TASK_SCHEDULER_OVERLOAD_2MS_B 0x04u
 #define TASK_SCHEDULER_HALTED 0xAAu
 
-#define TASK_SCH_MAX_NUMBER_TIME_TASKS 0x06u
+#define TASK_SCH_MAX_NUMBER_TIME_TASKS 0x07u
 
 #define TASK_SCHEDULER_BASE_FREQ 2000
 
 
 
-extern tSchedulingTask TimeTriggeredTasks[0x06u];
+extern tSchedulingTask TimeTriggeredTasks[0x07u];
 
 
 

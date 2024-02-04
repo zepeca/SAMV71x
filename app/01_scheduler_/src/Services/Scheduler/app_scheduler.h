@@ -34,6 +34,7 @@ typedef enum
     TASKS_10_MS,
     TASKS_50_MS,
     TASKS_100_MS,
+    TASKS_button, /*carlosa task button enum*/
     TASK_NULL,
 }tSchedulerTasks_ID;
 
@@ -50,7 +51,10 @@ typedef struct
 * Definition of module wide MACROS / #DEFINE-CONSTANTS 
 *****************************************************************************************************/
 
-
+/*carlosa New PP definitions*/
+#define ENABLE_OL_VERIFICATION  0 /*If 1 enables the verification of execution time*/
+#define ENABLE_PRIOTEST         1 /*If 1 to set TASKS_button as READY whenever TASKS_10_MS and TASKS_1_MS are set as READY too*/
+#define MAX_PRIO                5
 
 /* Global Task Scheduler Status definitions */
 #define    TASK_SCHEDULER_INIT              0x00u
@@ -60,7 +64,7 @@ typedef struct
 #define    TASK_SCHEDULER_OVERLOAD_2MS_B    0x04u
 #define    TASK_SCHEDULER_HALTED            0xAAu
 
-#define    TASK_SCH_MAX_NUMBER_TIME_TASKS   0x06u
+#define    TASK_SCH_MAX_NUMBER_TIME_TASKS   0x07u/*carlosa adding 1 task for the button task*/
 
 #define    TASK_SCHEDULER_BASE_FREQ		    2000
 /*****************************************************************************************************

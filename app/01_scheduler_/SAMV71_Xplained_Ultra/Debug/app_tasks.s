@@ -188,6 +188,34 @@ TASKS_LIST_100MS:
 	.cfi_endproc
 .LFE132:
 	.size	TASKS_LIST_100MS, .-TASKS_LIST_100MS
+	.align	2
+	.global	TASKS_LIST_button
+	.thumb
+	.thumb_func
+	.type	TASKS_LIST_button, %function
+TASKS_LIST_button:
+.LFB133:
+	.loc 1 55 0
+	.cfi_startproc
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+	.cfi_def_cfa_offset 4
+	.cfi_offset 7, -4
+	add	r7, sp, #0
+	.cfi_def_cfa_register 7
+	.loc 1 55 0
+	mov	sp, r7
+	.cfi_def_cfa_register 13
+	@ sp needed
+	ldr	r7, [sp], #4
+	.cfi_restore 7
+	.cfi_def_cfa_offset 0
+	bx	lr
+	.cfi_endproc
+.LFE133:
+	.size	TASKS_LIST_button, .-TASKS_LIST_button
 .Letext0:
 	.file 2 "c:\\isystem\\winidea9\\gcc\\arm\\arm-none-eabi\\include\\machine\\_default_types.h"
 	.file 3 "c:\\isystem\\winidea9\\gcc\\arm\\arm-none-eabi\\include\\sys\\_stdint.h"
@@ -195,14 +223,14 @@ TASKS_LIST_100MS:
 	.file 5 "C:\\Docs\\SAMV7x\\SAMV71x\\hal\\libchip_samv7\\include\\cmsis\\CMSIS\\Include/core_cm7.h"
 	.section	.debug_info,"",%progbits
 .Ldebug_info0:
-	.4byte	0x14e
+	.4byte	0x15f
 	.2byte	0x4
 	.4byte	.Ldebug_abbrev0
 	.byte	0x4
 	.uleb128 0x1
-	.4byte	.LASF12891
-	.byte	0x1
 	.4byte	.LASF12892
+	.byte	0x1
+	.4byte	.LASF12893
 	.4byte	.Ltext0
 	.4byte	.Letext0-.Ltext0
 	.4byte	.Ldebug_line0
@@ -325,8 +353,16 @@ TASKS_LIST_100MS:
 	.4byte	.LFE132-.LFB132
 	.uleb128 0x1
 	.byte	0x9c
-	.uleb128 0x8
+	.uleb128 0x6
 	.4byte	.LASF12888
+	.byte	0x1
+	.byte	0x36
+	.4byte	.LFB133
+	.4byte	.LFE133-.LFB133
+	.uleb128 0x1
+	.byte	0x9c
+	.uleb128 0x8
+	.4byte	.LASF12889
 	.byte	0x4
 	.2byte	0x151
 	.4byte	0x9e
@@ -334,24 +370,24 @@ TASKS_LIST_100MS:
 	.byte	0x3
 	.4byte	cpu_irq_critical_section_counter
 	.uleb128 0x8
-	.4byte	.LASF12889
+	.4byte	.LASF12890
 	.byte	0x4
 	.2byte	0x152
-	.4byte	0x134
+	.4byte	0x145
 	.uleb128 0x5
 	.byte	0x3
 	.4byte	cpu_irq_prev_interrupt_state
 	.uleb128 0x5
-	.4byte	0x139
+	.4byte	0x14a
 	.uleb128 0x2
 	.byte	0x1
 	.byte	0x2
-	.4byte	.LASF12890
+	.4byte	.LASF12891
 	.uleb128 0x9
-	.4byte	.LASF12893
+	.4byte	.LASF12894
 	.byte	0x5
 	.2byte	0x857
-	.4byte	0x14c
+	.4byte	0x15d
 	.uleb128 0x5
 	.4byte	0x81
 	.byte	0
@@ -41209,7 +41245,7 @@ TASKS_LIST_100MS:
 .LASF6884:
 	.ascii	"RTT_MR_RTPRES(value) ((RTT_MR_RTPRES_Msk & ((value)"
 	.ascii	" << RTT_MR_RTPRES_Pos)))\000"
-.LASF12893:
+.LASF12894:
 	.ascii	"ITM_RxBuffer\000"
 .LASF3929:
 	.ascii	"PIO_PSR_P26 (0x1u << 26)\000"
@@ -43688,6 +43724,8 @@ TASKS_LIST_100MS:
 .LASF802:
 	.ascii	"DWT_CTRL_PCSAMPLENA_Msk (0x1UL << DWT_CTRL_PCSAMPLE"
 	.ascii	"NA_Pos)\000"
+.LASF4888:
+	.ascii	"PIO_OWSR_P22 (0x1u << 22)\000"
 .LASF730:
 	.ascii	"SysTick_CTRL_CLKSOURCE_Msk (1UL << SysTick_CTRL_CLK"
 	.ascii	"SOURCE_Pos)\000"
@@ -46069,8 +46107,8 @@ TASKS_LIST_100MS:
 	.ascii	"TC_CMR_ETRGEDG_RISING (0x1u << 8)\000"
 .LASF9714:
 	.ascii	"XDMAC_CC_PERID_Msk (0x7fu << XDMAC_CC_PERID_Pos)\000"
-.LASF2487:
-	.ascii	"HSMCI_CMDR_ATACS_COMPLETION (0x1u << 26)\000"
+.LASF9611:
+	.ascii	"XDMAC_CIS_DIS (0x1u << 2)\000"
 .LASF3765:
 	.ascii	"MLB_MS1_MCS_Pos 0\000"
 .LASF913:
@@ -48314,8 +48352,8 @@ TASKS_LIST_100MS:
 	.ascii	"k & ((value) << SMC_MODE_TDF_CYCLES_Pos)))\000"
 .LASF2740:
 	.ascii	"ICM_ISR_URAD (0x1u << 24)\000"
-.LASF4888:
-	.ascii	"PIO_OWSR_P22 (0x1u << 22)\000"
+.LASF5879:
+	.ascii	"PMC_SLPWK_SR0_PID9 (0x1u << 9)\000"
 .LASF3274:
 	.ascii	"MCAN_ILS_FOEL (0x1u << 30)\000"
 .LASF2641:
@@ -49301,7 +49339,7 @@ TASKS_LIST_100MS:
 	.ascii	"PIO_PB12 (1u << 12)\000"
 .LASF10931:
 	.ascii	"REG_XDMAC_CIE3 (*(__O uint32_t*)0x40078110U)\000"
-.LASF12892:
+.LASF12893:
 	.ascii	"C:\\Docs\\SAMV7x\\SAMV71x\\app\\01_scheduler_\\src\\"
 	.ascii	"Services\\Scheduler\\app_tasks.c\000"
 .LASF1457:
@@ -49455,6 +49493,8 @@ TASKS_LIST_100MS:
 .LASF7838:
 	.ascii	"TC_WPMR_WPKEY(value) ((TC_WPMR_WPKEY_Msk & ((value)"
 	.ascii	" << TC_WPMR_WPKEY_Pos)))\000"
+.LASF6078:
+	.ascii	"PWM_SR_CHID1 (0x1u << 1)\000"
 .LASF8934:
 	.ascii	"USBHS_HSTADDR1_HSTADDRP0_Msk (0x7fu << USBHS_HSTADD"
 	.ascii	"R1_HSTADDRP0_Pos)\000"
@@ -50053,8 +50093,8 @@ TASKS_LIST_100MS:
 	.ascii	"__LDBL_DENORM_MIN__ 4.9406564584124654e-324L\000"
 .LASF10568:
 	.ascii	"REG_GMAC_ST2CW13 (*(__IO uint32_t*)0x4005071CU)\000"
-.LASF5879:
-	.ascii	"PMC_SLPWK_SR0_PID9 (0x1u << 9)\000"
+.LASF5486:
+	.ascii	"PMC_PCDR0_PID9 (0x1u << 9)\000"
 .LASF5754:
 	.ascii	"PMC_PCDR1_PID33 (0x1u << 1)\000"
 .LASF11508:
@@ -50459,7 +50499,7 @@ TASKS_LIST_100MS:
 	.ascii	"REG_USART1_CSR (*(__I uint32_t*)0x40028014U)\000"
 .LASF6299:
 	.ascii	"PWM_ELMR_CSEL3 (0x1u << 3)\000"
-.LASF12890:
+.LASF12891:
 	.ascii	"_Bool\000"
 .LASF1670:
 	.ascii	"CHIPID_CIDR_NVPTYP_ROM (0x0u << 28)\000"
@@ -52515,6 +52555,8 @@ TASKS_LIST_100MS:
 	.ascii	"REG_TWIHS0_IDR (*(__O uint32_t*)0x40018028U)\000"
 .LASF5094:
 	.ascii	"PIO_FELLSR_P4 (0x1u << 4)\000"
+.LASF12888:
+	.ascii	"TASKS_LIST_button\000"
 .LASF2189:
 	.ascii	"GMAC_TUR_TXUNR_Msk (0x3ffu << GMAC_TUR_TXUNR_Pos)\000"
 .LASF9987:
@@ -53345,7 +53387,7 @@ TASKS_LIST_100MS:
 	.ascii	"PIO_PUDR_P0 (0x1u << 0)\000"
 .LASF4252:
 	.ascii	"PIO_PDSR_P29 (0x1u << 29)\000"
-.LASF12889:
+.LASF12890:
 	.ascii	"cpu_irq_prev_interrupt_state\000"
 .LASF2384:
 	.ascii	"GMAC_ST2COM1_OFFSET_TYPE_Pos 7\000"
@@ -54056,8 +54098,8 @@ TASKS_LIST_100MS:
 	.ascii	"SCB_DFSR_VCATCH_Pos 3\000"
 .LASF7766:
 	.ascii	"TC_IDR_LDRAS (0x1u << 5)\000"
-.LASF6078:
-	.ascii	"PWM_SR_CHID1 (0x1u << 1)\000"
+.LASF2487:
+	.ascii	"HSMCI_CMDR_ATACS_COMPLETION (0x1u << 26)\000"
 .LASF8996:
 	.ascii	"USBHS_HSTPIPCFG_PEPNUM_Msk (0xfu << USBHS_HSTPIPCFG"
 	.ascii	"_PEPNUM_Pos)\000"
@@ -57574,8 +57616,6 @@ TASKS_LIST_100MS:
 	.ascii	"34U)\000"
 .LASF6315:
 	.ascii	"PWM_FPV2_FPZH0 (0x1u << 0)\000"
-.LASF9611:
-	.ascii	"XDMAC_CIS_DIS (0x1u << 2)\000"
 .LASF12165:
 	.ascii	"PIO_PA22X1_PIODCCLK (1u << 22)\000"
 .LASF11707:
@@ -58053,8 +58093,6 @@ TASKS_LIST_100MS:
 	.ascii	"PIO_PA2A_PWMC0_PWMH1 (1u << 2)\000"
 .LASF10135:
 	.ascii	"REG_USART2_RHR (*(__I uint32_t*)0x4002C018U)\000"
-.LASF5486:
-	.ascii	"PMC_PCDR0_PID9 (0x1u << 9)\000"
 .LASF12471:
 	.ascii	"PIO_PD23_IDX 119\000"
 .LASF5070:
@@ -59744,7 +59782,7 @@ TASKS_LIST_100MS:
 	.ascii	"REG_XDMAC_CNDC8 (*(__IO uint32_t*)0x4007826CU)\000"
 .LASF64:
 	.ascii	"__has_include(STR) __has_include__(STR)\000"
-.LASF12888:
+.LASF12889:
 	.ascii	"cpu_irq_critical_section_counter\000"
 .LASF10202:
 	.ascii	"_SAMV71_MCAN1_INSTANCE_ \000"
@@ -61167,7 +61205,7 @@ TASKS_LIST_100MS:
 	.ascii	"__has_feature(x) 0\000"
 .LASF11363:
 	.ascii	"REG_UART1_IER (*(__O uint32_t*)0x400E0A08U)\000"
-.LASF12891:
+.LASF12892:
 	.ascii	"GNU C 4.9.3 20150529 (release) [ARM/embedded-4_9-br"
 	.ascii	"anch revision 227977] -mcpu=cortex-m7 -mthumb -mflo"
 	.ascii	"at-abi=softfp -mfpu=fpv5-sp-d16 -g3 -fno-builtin-fa"

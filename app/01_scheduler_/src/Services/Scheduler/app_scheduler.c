@@ -33,27 +33,27 @@ UINT8 u8_10ms_Counter;
 UINT8 u8_50ms_Counter;
 UINT8 u8_100ms_Counter;
 
-
+/*carlosa tasks table*/
 tSchedulingTask TimeTriggeredTasks[TASK_SCH_MAX_NUMBER_TIME_TASKS] =
-{ 
-    {TASKS_1_MS,  TASKS_LIST_1MS,  SUSPENDED, 5},
-    {TASKS_2_MS_A,TASKS_LIST_2MS_A,SUSPENDED, 4},
-    {TASKS_2_MS_B,TASKS_LIST_2MS_B,SUSPENDED, 4},
-    {TASKS_10_MS, TASKS_LIST_10MS, SUSPENDED, 3},
-    {TASKS_50_MS, TASKS_LIST_50MS, SUSPENDED, 2},
-    {TASKS_100_MS,TASKS_LIST_100MS,SUSPENDED, 1},
+{
+        /*TaskId*/      /*ptrTask*/         /*enTaskState*/ /*u8Priority*/ 
+    {   TASKS_1_MS,     TASKS_LIST_1MS,     SUSPENDED,      5  },
+    {   TASKS_2_MS_A,   TASKS_LIST_2MS_A,   SUSPENDED,      4  },
+    {   TASKS_2_MS_B,   TASKS_LIST_2MS_B,   SUSPENDED,      4  },
+    {   TASKS_10_MS,    TASKS_LIST_10MS,    SUSPENDED,      3  },
+    {   TASKS_50_MS,    TASKS_LIST_50MS,    SUSPENDED,      2  },
+    {   TASKS_100_MS,   TASKS_LIST_100MS,   SUSPENDED,      1  },
+    {   TASKS_button,   TASKS_LIST_button,  SUSPENDED,      4  },
 };
 
 /*****************************************************************************************************
 * Definition of module wide (CONST-) CONSTANTs 
 *****************************************************************************************************/
 
-
 /*****************************************************************************************************
 * Code of module wide private FUNCTIONS
 *****************************************************************************************************/
 void vfnScheduler_Callback(void);
-
 /*****************************************************************************************************
 * Code of public FUNCTIONS
 *****************************************************************************************************/
@@ -121,7 +121,7 @@ void vfnScheduler_Stop(void)
 * \todo     
 */
 void vfnScheduler_TaskStart( tSchedulingTask * Task )
-{
+{   
     /* Indicate that this Task has gained CPU allocation */ 
     Task->enTaskState = RUNNING;
     TaskScheduler_Task_ID_Running =  Task->TaskId;
@@ -159,96 +159,68 @@ void vfnScheduler_TaskActivate( tSchedulingTask * Task )
 */
 void vfnTask_Scheduler(void)
 {
-    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-    /*  1ms execution thread - used to derive two execution threads:                */
-    /*  a) 1ms thread (high priority tasks)                                         */
-    /*  b) 100ms thread (lowest priority tasks)                                     */
-    /*  As any other thread on this scheduler, all tasks must be executed in <=500us*/
-    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-    if( ( TaskScheduler_Task_ID_Activated == TASKS_1_MS )
-         || ( TaskScheduler_Task_ID_Activated == TASKS_100_MS ) )
-    {
-        /* Make a copy of scheduled task ID */
-        TasksScheduler_Task_ID_Backup = TaskScheduler_Task_ID_Activated;
+    /*carlosa scheduler implementation */
+    bool    lboolRunTaskPrev_Flag = 0;
+    bool    lboolRunTask_Flag =     0;
+    UINT8   lu8TaskToRun_Id =       0;
+    UINT8   lu8Task_Id;
 
-        vfnScheduler_TaskStart (&TimeTriggeredTasks[TASKS_1_MS]);
-        if( TaskScheduler_Task_ID_Activated == TASKS_100_MS )
-        {
-            vfnScheduler_TaskStart (&TimeTriggeredTasks[TASKS_100_MS]);
+    for(lu8Task_Id = 0; lu8Task_Id<TASK_SCH_MAX_NUMBER_TIME_TASKS; lu8Task_Id++){
+
+        if (TimeTriggeredTasks[lu8Task_Id].enTaskState == READY){
+
+            /*at least one task is ready*/
+            lboolRunTaskPrev_Flag = lboolRunTask_Flag;
+            lboolRunTask_Flag = 1;
+
+            /*task is max prio*/
+            if (TimeTriggeredTasks[lu8Task_Id].u8Priority == MAX_PRIO){ 
+                lu8TaskToRun_Id = lu8Task_Id;
+                break;
+            }
+            else{
+
+                /*no prio to compare with*/
+                if (lboolRunTaskPrev_Flag == 0){
+                    lu8TaskToRun_Id = lu8Task_Id;
+                }
+                else{
+                    /*task priority is higher than current task to run*/
+                    if (TimeTriggeredTasks[lu8Task_Id].u8Priority > TimeTriggeredTasks[lu8TaskToRun_Id].u8Priority){
+
+                        lu8TaskToRun_Id = lu8Task_Id;
+                    }  
+                }
+                
+ 
+            }
         }
+    }
+
+    /*at least one task is in ready state*/
+    if (lboolRunTask_Flag){
+
+        /* start task */
+        vfnScheduler_TaskStart (&TimeTriggeredTasks[lu8TaskToRun_Id]);
+
+#if ENABLE_OL_VERIFICATION
+/*to do verification implementation*/
+
+        /* Make a copy of scheduled task ID */
+        TasksScheduler_Task_ID_Backup = TimeTriggeredTasks[lu8TaskToRun_Id].TaskId;
+
         /* Verify that thread execution took less than 500 us */
-        if( TasksScheduler_Task_ID_Backup == TaskScheduler_Task_ID_Activated )
+        if( TimeTriggeredTasks[TasksScheduler_Task_ID_Backup].TaskId == )
         {
-             /* In case execution of all thread took less than 500us */
+                /* In case execution of all thread took less than 500us */
             TaskScheduler_Task_ID_Activated = TASK_NULL;
         }
         else
         {
-            gu8Scheduler_Status = TASK_SCHEDULER_OVERLOAD_1MS;
-        }
-    }
-    else
-    {
-        /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-        /*  2ms execution thread - used to derive two execution threads:                */
-        /*  a) 2ms group A thread (high priority tasks)                                 */
-        /*  b) 50ms thread (second lowest priority tasks)                               */
-        /*  As any other thread on this scheduler, all tasks must be executed in <=500us*/
-        /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-        if( ( TaskScheduler_Task_ID_Activated == TASKS_2_MS_A )
-             || ( TaskScheduler_Task_ID_Activated == TASKS_50_MS ) )
-        {
-            /* Make a copy of scheduled task ID */
-            TasksScheduler_Task_ID_Backup = TaskScheduler_Task_ID_Activated;
-
-            vfnScheduler_TaskStart (&TimeTriggeredTasks[TASKS_2_MS_A]);
-            if( TaskScheduler_Task_ID_Activated == TASKS_50_MS )
-            {
-                vfnScheduler_TaskStart (&TimeTriggeredTasks[TASKS_50_MS]);
+            gu8Scheduler_Status = TASK_SCHEDULER_OVERLOAD_2MS_A;
             }
-            /* Verify that thread execution took less than 500 us */
-            if( TasksScheduler_Task_ID_Backup == TaskScheduler_Task_ID_Activated )
-            {
-                 /* In case execution of all thread took less than 500us */
-                TaskScheduler_Task_ID_Activated = TASK_NULL;
-            }
-            else
-            {
-                gu8Scheduler_Status = TASK_SCHEDULER_OVERLOAD_2MS_A;
-            }
-        }
-        else
-        {
-            /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-            /*  2ms execution thread - used to derive two execution threads:                */
-            /*  a) 2ms group B thread (high priority tasks)                                 */
-            /*  b) 10ms thread (medium priority tasks)                                      */
-            /*  As any other thread on this scheduler, all tasks must be executed in <=500us*/
-            /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-            if( ( TaskScheduler_Task_ID_Activated == TASKS_2_MS_B )
-                 || ( TaskScheduler_Task_ID_Activated == TASKS_10_MS ) )
-            {
-                /* Make a copy of scheduled task ID */
-                TasksScheduler_Task_ID_Backup = TaskScheduler_Task_ID_Activated;
-
-                vfnScheduler_TaskStart (&TimeTriggeredTasks[TASKS_2_MS_B]);
-                if( TaskScheduler_Task_ID_Activated == TASKS_10_MS )
-                {
-                    vfnScheduler_TaskStart (&TimeTriggeredTasks[TASKS_10_MS]);
-                }
-                 /* Verify that thread execution took less than 500 us */
-                if( TasksScheduler_Task_ID_Backup == TaskScheduler_Task_ID_Activated )
-                {
-                    /* In case execution of all thread took less than 500us */
-                    TaskScheduler_Task_ID_Activated = TASK_NULL;
-                }
-                else
-                {
-                    gu8Scheduler_Status = TASK_SCHEDULER_OVERLOAD_2MS_B;
-                }
-            }
-        }
-    }        
+#endif
+    } 
 }
 
 /*******************************************************************************/
@@ -296,6 +268,10 @@ void vfnScheduler_Callback(void)
         else
         {
             vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_1_MS]);
+#if ENABLE_PRIOTEST
+            vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_button]);
+#endif
+
         }
     }
     else
@@ -338,6 +314,9 @@ void vfnScheduler_Callback(void)
                 if( u8_10ms_Counter >= 5u )
                 {
                     vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_10_MS]);
+#if ENABLE_PRIOTEST
+                    vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_button]);
+#endif
                     u8_10ms_Counter        = 0u;
                 }
                 /*-- Allow 2 ms group B periodic tasks to be executed --*/
