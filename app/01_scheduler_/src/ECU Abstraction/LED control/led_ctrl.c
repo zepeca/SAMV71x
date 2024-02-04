@@ -65,6 +65,12 @@ void vfnLedCtrl_Configure( void )
 */
 void vfnLedCtrl_BlinkingPattern(void)
 {
+
+/*
+*carlosa to do
+*remove toogle for led 1
+*/
+
 /* Global state machine status for LED flashing control  */
 	static uint8_t gu8Index;
 
@@ -95,4 +101,20 @@ void vfnLedCtrl_BlinkingPattern(void)
             break;
     }
 }
+/*******************************************************************************/
+
+/*******************************************************************************/
+/*
+*carlosa to do
+*implement void vfnLed_1_off()
+*step 1 turn off led 1
+*/
+/*******************************************************************************/
+
+/*******************************************************************************/
+/*
+*carlosa to do
+*implement void vfnLed_1_on()
+*step 1 turn on led 1
+*/
 /*******************************************************************************/

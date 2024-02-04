@@ -162,8 +162,8 @@ void vfnTask_Scheduler(void)
     /*carlosa scheduler implementation */
     bool    lboolRunTaskPrev_Flag = 0;
     bool    lboolRunTask_Flag =     0;
-    UINT8   lu8TaskToRun_Id =       0;
-    UINT8   lu8Task_Id;
+    uint8_t   lu8TaskToRun_Id =       0;
+    uint8_t   lu8Task_Id = 0;
 
     for(lu8Task_Id = 0; lu8Task_Id<TASK_SCH_MAX_NUMBER_TIME_TASKS; lu8Task_Id++){
 
@@ -204,7 +204,7 @@ void vfnTask_Scheduler(void)
         vfnScheduler_TaskStart (&TimeTriggeredTasks[lu8TaskToRun_Id]);
 
 #if ENABLE_OL_VERIFICATION
-/*to do verification implementation*/
+/*carlosa to do exec time verificatio ***to confirm*/
 
         /* Make a copy of scheduled task ID */
         TasksScheduler_Task_ID_Backup = TimeTriggeredTasks[lu8TaskToRun_Id].TaskId;
@@ -218,7 +218,7 @@ void vfnTask_Scheduler(void)
         else
         {
             gu8Scheduler_Status = TASK_SCHEDULER_OVERLOAD_2MS_A;
-            }
+        }
 #endif
     } 
 }
@@ -268,7 +268,7 @@ void vfnScheduler_Callback(void)
         else
         {
             vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_1_MS]);
-#if ENABLE_PRIOTEST
+#if ENABLE_1MSTEST
             vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_button]);
 #endif
 
@@ -314,7 +314,7 @@ void vfnScheduler_Callback(void)
                 if( u8_10ms_Counter >= 5u )
                 {
                     vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_10_MS]);
-#if ENABLE_PRIOTEST
+#if ENABLE_10MSTEST
                     vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_button]);
 #endif
                     u8_10ms_Counter        = 0u;
@@ -328,4 +328,14 @@ void vfnScheduler_Callback(void)
         }
     }
 }
+/***************************************************************************************************/
+
+/***************************************************************************************************/
+/*
+*carlosa to do
+*implement 
+*void vfnButton_1_Handler() (function is called when button 1 is pressed)
+*step 1 call vfnLed_1_on();
+*step 2 call vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_button]);
+*/
 /***************************************************************************************************/

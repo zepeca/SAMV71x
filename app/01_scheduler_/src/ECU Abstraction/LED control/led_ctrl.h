@@ -40,6 +40,9 @@ void vfnLedCtrl_Configure( void );
 /** Turn a combination of 2 LEDs with a unique blinking pattern */
 void vfnLedCtrl_BlinkingPattern(void);
 
+/*carlosa led on and off prototype function*/
+void vfnLed_1_on(void);
+void vfnLed_1_off(void);
 
 /**************************************************************************************************/
 

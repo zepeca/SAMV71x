@@ -53,7 +53,8 @@ typedef struct
 
 /*carlosa New PP definitions*/
 #define ENABLE_OL_VERIFICATION  0 /*If 1 enables the verification of execution time*/
-#define ENABLE_PRIOTEST         1 /*If 1 to set TASKS_button as READY whenever TASKS_10_MS and TASKS_1_MS are set as READY too*/
+#define ENABLE_1MSTEST          0
+#define ENABLE_10MSTEST         0
 #define MAX_PRIO                5
 
 /* Global Task Scheduler Status definitions */
@@ -87,6 +88,9 @@ void vfnScheduler_Stop(void);
 
 /** Multi-thread round robin task scheduler */
 void vfnTask_Scheduler(void);
+
+/*carlosa vfnButton_1_Handler hanlder*/
+void vfnButton_1_Handler(void);
 
 /*******************************************************************************/
 

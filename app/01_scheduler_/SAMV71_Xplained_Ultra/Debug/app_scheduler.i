@@ -18795,7 +18795,8 @@ typedef struct
 
 
 #define ENABLE_OL_VERIFICATION 0
-#define ENABLE_PRIOTEST 1
+#define ENABLE_1MSTEST 0
+#define ENABLE_10MSTEST 0
 #define MAX_PRIO 5
 
 
@@ -18957,8 +18958,8 @@ void vfnTask_Scheduler(void)
 
     _Bool lboolRunTaskPrev_Flag = 0;
     _Bool lboolRunTask_Flag = 0;
-    __attribute__ ((aligned (1))) uint8_t lu8TaskToRun_Id = 0;
-    __attribute__ ((aligned (1))) uint8_t lu8Task_Id;
+    uint8_t lu8TaskToRun_Id = 0;
+    uint8_t lu8Task_Id = 0;
 
     for(lu8Task_Id = 0; lu8Task_Id<0x07u; lu8Task_Id++){
 
@@ -19021,7 +19022,7 @@ void vfnScheduler_Callback(void)
         {
             vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_1_MS]);
 
-            vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_button]);
+
 
 
         }
@@ -19067,7 +19068,7 @@ void vfnScheduler_Callback(void)
                 {
                     vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_10_MS]);
 
-                    vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_button]);
+
 
                     u8_10ms_Counter = 0u;
                 }

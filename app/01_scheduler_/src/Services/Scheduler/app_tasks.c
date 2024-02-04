@@ -50,7 +50,13 @@ void TASKS_LIST_50MS( void )
 /* List of tasks to be executed @ 100ms */
 void TASKS_LIST_100MS( void )
 {;}
+
 /* carlosa List of tasks to be executed @ button */
+/*
+*carlosa to do
+*inside TASKS_LIST_button
+*step 1 call vfnLed_1_off();
+*/ 
 void TASKS_LIST_button( void )
 {;}
 

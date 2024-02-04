@@ -26818,7 +26818,8 @@ typedef struct
 
 
 #define ENABLE_OL_VERIFICATION 0
-#define ENABLE_PRIOTEST 1
+#define ENABLE_1MSTEST 0
+#define ENABLE_10MSTEST 0
 #define MAX_PRIO 5
 
 
