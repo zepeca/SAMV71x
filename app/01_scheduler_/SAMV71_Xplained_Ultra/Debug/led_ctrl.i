@@ -18737,6 +18737,10 @@ void vfnLedCtrl_Configure( void );
 
 
 void vfnLedCtrl_BlinkingPattern(void);
+
+
+void vfnLed_1_on(void);
+void vfnLed_1_off(void);
 # 17 "C:\\Docs\\SAMV7x\\SAMV71x\\app\\01_scheduler_\\src\\ECU Abstraction\\LED control\\led_ctrl.c" 2
 
 # 1 "C:\\Docs\\SAMV7x\\SAMV71x\\bsp\\libboard_samv7-ek\\include/led.h" 1
@@ -18766,6 +18770,12 @@ void vfnLedCtrl_Configure( void )
 # 66 "C:\\Docs\\SAMV7x\\SAMV71x\\app\\01_scheduler_\\src\\ECU Abstraction\\LED control\\led_ctrl.c"
 void vfnLedCtrl_BlinkingPattern(void)
 {
+
+
+
+
+
+
 
  static uint8_t gu8Index;
 

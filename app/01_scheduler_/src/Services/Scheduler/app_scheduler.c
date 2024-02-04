@@ -262,6 +262,7 @@ void vfnScheduler_Callback(void)
         {
             /* Indicate that Task is Ready to be executed */ 
             vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_100_MS]);
+            vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_1_MS]);
             u8_100ms_Counter       = 0u;
         }
         /*-- Allow 1 ms periodic tasks to be executed --*/
@@ -290,6 +291,7 @@ void vfnScheduler_Callback(void)
             if( u8_50ms_Counter >= 25u )
             {
                 vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_50_MS]);
+                vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_2_MS_A]);
                 u8_50ms_Counter        = 0u;
             }
             /*-- Allow 2 ms group A periodic tasks to be executed --*/
@@ -314,6 +316,7 @@ void vfnScheduler_Callback(void)
                 if( u8_10ms_Counter >= 5u )
                 {
                     vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_10_MS]);
+                    vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_2_MS_B]);
 #if ENABLE_10MSTEST
                     vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_button]);
 #endif

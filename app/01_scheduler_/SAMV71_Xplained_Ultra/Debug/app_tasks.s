@@ -195,7 +195,7 @@ TASKS_LIST_100MS:
 	.type	TASKS_LIST_button, %function
 TASKS_LIST_button:
 .LFB133:
-	.loc 1 55 0
+	.loc 1 61 0
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 1, uses_anonymous_args = 0
@@ -205,7 +205,7 @@ TASKS_LIST_button:
 	.cfi_offset 7, -4
 	add	r7, sp, #0
 	.cfi_def_cfa_register 7
-	.loc 1 55 0
+	.loc 1 61 0
 	mov	sp, r7
 	.cfi_def_cfa_register 13
 	@ sp needed
@@ -356,7 +356,7 @@ TASKS_LIST_button:
 	.uleb128 0x6
 	.4byte	.LASF12888
 	.byte	0x1
-	.byte	0x36
+	.byte	0x3c
 	.4byte	.LFB133
 	.4byte	.LFE133-.LFB133
 	.uleb128 0x1

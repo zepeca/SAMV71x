@@ -26853,6 +26853,9 @@ void vfnScheduler_Stop(void);
 
 
 void vfnTask_Scheduler(void);
+
+
+void vfnButton_1_Handler(void);
 # 22 "C:\\Docs\\SAMV7x\\SAMV71x\\app\\01_scheduler_\\src\\main.c" 2
 
 # 1 "C:\\Docs\\SAMV7x\\SAMV71x\\app\\01_scheduler_\\src\\ECU Abstraction\\LED control/led_ctrl.h" 1
@@ -26863,6 +26866,10 @@ void vfnLedCtrl_Configure( void );
 
 
 void vfnLedCtrl_BlinkingPattern(void);
+
+
+void vfnLed_1_on(void);
+void vfnLed_1_off(void);
 # 24 "C:\\Docs\\SAMV7x\\SAMV71x\\app\\01_scheduler_\\src\\main.c" 2
 # 42 "C:\\Docs\\SAMV7x\\SAMV71x\\app\\01_scheduler_\\src\\main.c"
 extern int main( void )

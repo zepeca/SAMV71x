@@ -5981,23 +5981,23 @@ OUTPUT(tau.elf elf32-littlearm)
  .debug_macro   0x00025690     0x110a C:\Docs\SAMV7x\SAMV71x\app\01_scheduler_\SAMV71_Xplained_Ultra\Debug\wdt.o
  .debug_macro   0x0002679a      0xe82 C:\Docs\SAMV7x\SAMV71x\app\01_scheduler_\SAMV71_Xplained_Ultra\Debug\led_ctrl.o
 
-.debug_line     0x00000000     0xe27e
+.debug_line     0x00000000     0xe282
  .debug_line    0x00000000     0x1157 C:\Docs\SAMV7x\SAMV71x\app\01_scheduler_\SAMV71_Xplained_Ultra\Debug\main.o
  .debug_line    0x00001157      0xb10 C:\Docs\SAMV7x\SAMV71x\app\01_scheduler_\SAMV71_Xplained_Ultra\Debug\system_sam.o
  .debug_line    0x00001c67     0x1092 C:\Docs\SAMV7x\SAMV71x\app\01_scheduler_\SAMV71_Xplained_Ultra\Debug\syscalls.o
  .debug_line    0x00002cf9      0xcbe C:\Docs\SAMV7x\SAMV71x\app\01_scheduler_\SAMV71_Xplained_Ultra\Debug\app_scheduler.o
- .debug_line    0x000039b7      0xbaa C:\Docs\SAMV7x\SAMV71x\app\01_scheduler_\SAMV71_Xplained_Ultra\Debug\app_tasks.o
- .debug_line    0x00004561      0xa7d C:\Docs\SAMV7x\SAMV71x\app\01_scheduler_\SAMV71_Xplained_Ultra\Debug\startup_sam.o
- .debug_line    0x00004fde     0x109f C:\Docs\SAMV7x\SAMV71x\app\01_scheduler_\SAMV71_Xplained_Ultra\Debug\board_lowlevel.o
- .debug_line    0x0000607d     0x11e1 C:\Docs\SAMV7x\SAMV71x\app\01_scheduler_\SAMV71_Xplained_Ultra\Debug\dbg_console.o
- .debug_line    0x0000725e     0x105b C:\Docs\SAMV7x\SAMV71x\app\01_scheduler_\SAMV71_Xplained_Ultra\Debug\led.o
- .debug_line    0x000082b9      0xf90 C:\Docs\SAMV7x\SAMV71x\app\01_scheduler_\SAMV71_Xplained_Ultra\Debug\pmc.o
- .debug_line    0x00009249      0xe8f C:\Docs\SAMV7x\SAMV71x\app\01_scheduler_\SAMV71_Xplained_Ultra\Debug\pio.o
- .debug_line    0x0000a0d8      0xe16 C:\Docs\SAMV7x\SAMV71x\app\01_scheduler_\SAMV71_Xplained_Ultra\Debug\mpu.o
- .debug_line    0x0000aeee      0xe44 C:\Docs\SAMV7x\SAMV71x\app\01_scheduler_\SAMV71_Xplained_Ultra\Debug\exceptions.o
- .debug_line    0x0000bd32      0xbb7 C:\Docs\SAMV7x\SAMV71x\app\01_scheduler_\SAMV71_Xplained_Ultra\Debug\systick.o
- .debug_line    0x0000c8e9      0xde9 C:\Docs\SAMV7x\SAMV71x\app\01_scheduler_\SAMV71_Xplained_Ultra\Debug\wdt.o
- .debug_line    0x0000d6d2      0xbac C:\Docs\SAMV7x\SAMV71x\app\01_scheduler_\SAMV71_Xplained_Ultra\Debug\led_ctrl.o
+ .debug_line    0x000039b7      0xbac C:\Docs\SAMV7x\SAMV71x\app\01_scheduler_\SAMV71_Xplained_Ultra\Debug\app_tasks.o
+ .debug_line    0x00004563      0xa7d C:\Docs\SAMV7x\SAMV71x\app\01_scheduler_\SAMV71_Xplained_Ultra\Debug\startup_sam.o
+ .debug_line    0x00004fe0     0x109f C:\Docs\SAMV7x\SAMV71x\app\01_scheduler_\SAMV71_Xplained_Ultra\Debug\board_lowlevel.o
+ .debug_line    0x0000607f     0x11e1 C:\Docs\SAMV7x\SAMV71x\app\01_scheduler_\SAMV71_Xplained_Ultra\Debug\dbg_console.o
+ .debug_line    0x00007260     0x105b C:\Docs\SAMV7x\SAMV71x\app\01_scheduler_\SAMV71_Xplained_Ultra\Debug\led.o
+ .debug_line    0x000082bb      0xf90 C:\Docs\SAMV7x\SAMV71x\app\01_scheduler_\SAMV71_Xplained_Ultra\Debug\pmc.o
+ .debug_line    0x0000924b      0xe8f C:\Docs\SAMV7x\SAMV71x\app\01_scheduler_\SAMV71_Xplained_Ultra\Debug\pio.o
+ .debug_line    0x0000a0da      0xe16 C:\Docs\SAMV7x\SAMV71x\app\01_scheduler_\SAMV71_Xplained_Ultra\Debug\mpu.o
+ .debug_line    0x0000aef0      0xe44 C:\Docs\SAMV7x\SAMV71x\app\01_scheduler_\SAMV71_Xplained_Ultra\Debug\exceptions.o
+ .debug_line    0x0000bd34      0xbb7 C:\Docs\SAMV7x\SAMV71x\app\01_scheduler_\SAMV71_Xplained_Ultra\Debug\systick.o
+ .debug_line    0x0000c8eb      0xde9 C:\Docs\SAMV7x\SAMV71x\app\01_scheduler_\SAMV71_Xplained_Ultra\Debug\wdt.o
+ .debug_line    0x0000d6d4      0xbae C:\Docs\SAMV7x\SAMV71x\app\01_scheduler_\SAMV71_Xplained_Ultra\Debug\led_ctrl.o
 
 .debug_str      0x00000000    0x7de51
  .debug_str     0x00000000    0x7b442 C:\Docs\SAMV7x\SAMV71x\app\01_scheduler_\SAMV71_Xplained_Ultra\Debug\main.o

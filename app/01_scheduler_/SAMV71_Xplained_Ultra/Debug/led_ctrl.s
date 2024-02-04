@@ -69,14 +69,14 @@ vfnLedCtrl_BlinkingPattern:
 	.cfi_offset 14, -4
 	add	r7, sp, #0
 	.cfi_def_cfa_register 7
-	.loc 1 71 0
+	.loc 1 77 0
 	ldr	r3, .L11
 	ldrb	r3, [r3]	@ zero_extendqisi2
 	adds	r3, r3, #1
 	uxtb	r2, r3
 	ldr	r3, .L11
 	strb	r2, [r3]
-	.loc 1 73 0
+	.loc 1 79 0
 	ldr	r3, .L11
 	ldrb	r3, [r3]	@ zero_extendqisi2
 	cmp	r3, #11
@@ -87,71 +87,71 @@ vfnLedCtrl_BlinkingPattern:
 	beq	.L6
 	cmp	r3, #3
 	beq	.L7
-	.loc 1 95 0
+	.loc 1 101 0
 	b	.L2
 .L5:
-	.loc 1 73 0
+	.loc 1 79 0
 	cmp	r3, #13
 	beq	.L8
 	cmp	r3, #101
 	beq	.L9
-	.loc 1 95 0
+	.loc 1 101 0
 	b	.L2
 .L6:
-	.loc 1 76 0
+	.loc 1 82 0
 	movs	r0, #0
 	bl	LED_Set
-	.loc 1 77 0
+	.loc 1 83 0
 	movs	r0, #1
 	bl	LED_Set
-	.loc 1 78 0
+	.loc 1 84 0
 	b	.L2
 .L4:
-	.loc 1 80 0
+	.loc 1 86 0
 	movs	r0, #0
 	bl	LED_Set
-	.loc 1 81 0
+	.loc 1 87 0
 	movs	r0, #1
 	bl	LED_Set
-	.loc 1 82 0
+	.loc 1 88 0
 	b	.L2
 .L7:
-	.loc 1 84 0
+	.loc 1 90 0
 	movs	r0, #0
 	bl	LED_Clear
-	.loc 1 85 0
+	.loc 1 91 0
 	movs	r0, #1
 	bl	LED_Clear
-	.loc 1 86 0
+	.loc 1 92 0
 	b	.L2
 .L8:
-	.loc 1 88 0
+	.loc 1 94 0
 	movs	r0, #0
 	bl	LED_Clear
-	.loc 1 89 0
+	.loc 1 95 0
 	movs	r0, #1
 	bl	LED_Clear
-	.loc 1 90 0
+	.loc 1 96 0
 	b	.L2
 .L9:
-	.loc 1 92 0
+	.loc 1 98 0
 	ldr	r3, .L11
 	movs	r2, #0
 	strb	r2, [r3]
-	.loc 1 93 0
+	.loc 1 99 0
 	nop
 .L2:
-	.loc 1 97 0
+	.loc 1 103 0
 	pop	{r7, pc}
 .L12:
 	.align	2
 .L11:
-	.word	gu8Index.6879
+	.word	gu8Index.6883
 	.cfi_endproc
 .LFE128:
 	.size	vfnLedCtrl_BlinkingPattern, .-vfnLedCtrl_BlinkingPattern
 	.bss
-gu8Index.6879:
+gu8Index.6883:
 	.space	1
 	.text
 .Letext0:
@@ -273,11 +273,11 @@ gu8Index.6879:
 	.uleb128 0x8
 	.4byte	.LASF12884
 	.byte	0x1
-	.byte	0x45
+	.byte	0x4b
 	.4byte	0x8c
 	.uleb128 0x5
 	.byte	0x3
-	.4byte	gu8Index.6879
+	.4byte	gu8Index.6883
 	.byte	0
 	.uleb128 0x9
 	.4byte	.LASF12885

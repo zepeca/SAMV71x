@@ -18737,6 +18737,10 @@ void vfnLedCtrl_Configure( void );
 
 
 void vfnLedCtrl_BlinkingPattern(void);
+
+
+void vfnLed_1_on(void);
+void vfnLed_1_off(void);
 # 17 "C:\\Docs\\SAMV7x\\SAMV71x\\app\\01_scheduler_\\src\\Services\\Scheduler\\app_tasks.h" 2
 # 35 "C:\\Docs\\SAMV7x\\SAMV71x\\app\\01_scheduler_\\src\\Services\\Scheduler\\app_tasks.h"
 void TASKS_LIST_1MS( void );
@@ -18781,6 +18785,12 @@ void TASKS_LIST_50MS( void )
 
 void TASKS_LIST_100MS( void )
 {;}
+
+
+
+
+
+
 
 void TASKS_LIST_button( void )
 {;}
