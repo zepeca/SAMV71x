@@ -27,45 +27,27 @@
 /* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                           */
 /* ---------------------------------------------------------------------------- */
 
-INPUT (E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\main_full.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\main.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\IntQueueTimer.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\system_sam.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\RegTest.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\syscalls.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\startup_sam.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\timers.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\event_groups.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\list.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\queue.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\tasks.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\heap_4.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\port.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\IntSemTest.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\QueueOverwrite.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\QueueSet.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\recmutex.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\semtest.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\TaskNotify.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\TimerDemo.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\BlockQ.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\blocktim.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\countsem.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\death.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\dynamic.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\EventGroupsDemo.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\GenQTest.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\IntQueue.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\flop.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\dbg_console.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\board_lowlevel.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\led.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\wdt.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\pmc.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\tc.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\uart.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\pio.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\mpu.o)
+INPUT (C:\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\main.o 
+C:\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\main_blinky.o 
+C:\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\system_sam.o 
+C:\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\syscalls.o 
+C:\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\startup_sam.o 
+C:\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\timers.o 
+C:\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\event_groups.o 
+C:\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\list.o 
+C:\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\queue.o 
+C:\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\tasks.o 
+C:\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\heap_4.o 
+C:\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\port.o 
+C:\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\dbg_console.o 
+C:\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\board_lowlevel.o 
+C:\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\led.o 
+C:\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\wdt.o 
+C:\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\pmc.o 
+C:\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\tc.o 
+C:\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\uart.o 
+C:\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\pio.o 
+C:\SAMV71x\app\FreeRTOS_Blinky_Full\SAMV71_Xplained_Ultra\Debug\mpu.o)
 
 /*------------------------------------------------------------------------------
  *      Linker script for running in internal FLASH on the ATSAMV71Q21

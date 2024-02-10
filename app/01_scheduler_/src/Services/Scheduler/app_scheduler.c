@@ -17,6 +17,8 @@
 /** Real Time timer resource assigned as scheduler tick */
 #include "systick.h"
 
+//#include "sw_ctrl.h"
+
 
 /*****************************************************************************************************
 * Definition of  VARIABLEs - 
@@ -340,5 +342,14 @@ void vfnScheduler_Callback(void)
 *void vfnButton_1_Handler() (function is called when button 1 is pressed)
 *step 1 call vfnLed_1_on();
 *step 2 call vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_button]);
+*/
+/*
+static void ProcessButtonEvt( uint8_t ucButton )
+{
+	if ( ucButton == 0 ) {
+			vfnScheduler_TaskActivate( &TimeTriggeredTasks[TASKS_button] );
+		
+	}
+}
 */
 /***************************************************************************************************/

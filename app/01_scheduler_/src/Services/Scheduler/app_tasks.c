@@ -15,6 +15,8 @@
 /** Scheduler function prototypes definitions */
 #include    "app_tasks.h"
 
+#include    "led_ctrl.h"
+
 /*****************************************************************************************************
 * Definition of  VARIABLEs - 
 *****************************************************************************************************/
@@ -58,5 +60,7 @@ void TASKS_LIST_100MS( void )
 *step 1 call vfnLed_1_off();
 */ 
 void TASKS_LIST_button( void )
-{;}
+{
+    vfnLed_1_on();
+}
 

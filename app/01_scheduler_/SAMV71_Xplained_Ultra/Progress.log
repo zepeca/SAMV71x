@@ -1,1 +1,10 @@
+CONVERTING	C:\SAMV71x\app\01_scheduler_\SAMV71_Xplained_Ultra\Debug\tau.elf
+LOADING	C:\SAMV71x\app\01_scheduler_\SAMV71_Xplained_Ultra\Debug\tau.elf
+ANALYZING
+ANALYZING
+EMULATION	POD: Cortex (JTAG,SWD)   CPU: Cortex-M7
 DEBUG	PROTOCOL: SWD; RESET: SoC
+LOADING 	38612 bytes
+UMI INFO	Loading UMI monitor...
+PROGRAMMING	Atmel ATSAMV7 (2048 kB) (3 sectors)
+UMI INFO	Unloading UMI monitor...

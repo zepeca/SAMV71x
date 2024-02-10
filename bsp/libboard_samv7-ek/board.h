@@ -299,6 +299,7 @@
  */
 #define PIN_PUSHBUTTON_0 \
 		{PIO_PA9, PIOA, ID_PIOA, PIO_INPUT, PIO_PULLUP | PIO_DEBOUNCE | PIO_IT_FALL_EDGE}
+
 /** 
  * Push button #1 definition. 
  * Attributes = pull-up + debounce + interrupt on rising edge.

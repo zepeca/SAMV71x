@@ -8,7 +8,7 @@
       <VersionLow>1</VersionLow>
      </REG_HEADER>
      <REG_ROOT>
-      <RegVer>1259470848</RegVer>
+      <RegVer>1259470856</RegVer>
       <ColorSyntax>
        <ASMSyntaxFile></ASMSyntaxFile>
       </ColorSyntax>
@@ -49,9 +49,9 @@
       </History>
       <PI.0>
        <Bookmarks_num_>0</Bookmarks_num_>
-       <L>334</L>
+       <L>396</L>
        <P>..\..\..\toolset\gcc\startup_sam.c</P>
-       <VL>312</VL>
+       <VL>383</VL>
       </PI.0>
       <PI.1>
        <Bookmarks_num_>0</Bookmarks_num_>
@@ -359,7 +359,7 @@
       <VersionLow>1</VersionLow>
      </REG_HEADER>
      <REG_ROOT>
-      <RegVer>1259470848</RegVer>
+      <RegVer>1259470856</RegVer>
       <ANGUIData.0>
        <Filetime type="B">CCBHDLINFGDEMNAB</Filetime>
        <GUID type="B">FKNPFLDDOILOGCEGJDGOKFGNCAALLENJ</GUID>
@@ -810,7 +810,7 @@
    </REG_HEADER>
    <REG_ROOT>
     <HServer>HASYST</HServer>
-    <RegVer>1259470848</RegVer>
+    <RegVer>1259470856</RegVer>
     <Cfg_System>
     </Cfg_System>
     <Desktop>
@@ -818,7 +818,7 @@
      <Documents.0>
       <ActiveDocument>
        <Maximized>True</Maximized>
-       <RelativeFileName>..\src\main_blinky.c</RelativeFileName>
+       <RelativeFileName>..\..\..\toolset\gcc\startup_sam.c</RelativeFileName>
       </ActiveDocument>
       <Editor.0>
        <FileBarIndex>0</FileBarIndex>
@@ -866,10 +866,10 @@
       </EditorHistoryFile.3>
      </Documents.0>
      <Progress>
-      <b>859</b>
-      <l>903</l>
-      <r>1407</r>
-      <t>495</t>
+      <b>546</b>
+      <l>431</l>
+      <r>935</r>
+      <t>182</t>
      </Progress>
      <Watches>
       <ActiveWatchPane>2</ActiveWatchPane>
@@ -1165,7 +1165,7 @@
           <Width>0</Width>
          </Columns.0>
          <Columns.1>
-          <Pos type="D">21.6666666666666680</Pos>
+          <Pos type="D">21.6666666666666679</Pos>
           <Width>0</Width>
          </Columns.1>
          <Columns.2>
@@ -1173,11 +1173,11 @@
           <Width>0</Width>
          </Columns.2>
          <Columns.3>
-          <Pos type="D">63.5416666666666640</Pos>
+          <Pos type="D">63.5416666666666643</Pos>
           <Width>0</Width>
          </Columns.3>
          <Columns.4>
-          <Pos type="D">84.7916666666666710</Pos>
+          <Pos type="D">84.7916666666666714</Pos>
           <Width>0</Width>
          </Columns.4>
         </Data>
@@ -1342,6 +1342,7 @@
          <CallStack>0</CallStack>
          <DumpELFHeaders>0</DumpELFHeaders>
          <GCC_ARM_double_Format>1</GCC_ARM_double_Format>
+         <IAR_78k_RegisterNumbers>0</IAR_78k_RegisterNumbers>
          <IgnoreChecksum>0</IgnoreChecksum>
          <IgnoreNonStatementLines>1</IgnoreNonStatementLines>
          <InsertInlinedFunctions>0</InsertInlinedFunctions>
@@ -1787,7 +1788,7 @@
       </Combo>
      </History>
      <Info>
-      <winIDEA>Build 9.12.288</winIDEA>
+      <winIDEA>Build 9.12.288.2</winIDEA>
      </Info>
      <Options>
       <CallstackWindow>
@@ -2159,7 +2160,7 @@
     <VersionLow>1</VersionLow>
    </REG_HEADER>
    <REG_ROOT>
-    <RegVer>1259470848</RegVer>
+    <RegVer>1259470856</RegVer>
     <Project_Local>
      <Project.0>
       <DefaultTargetName>SAMV71_Sample</DefaultTargetName>
@@ -2174,7 +2175,7 @@
     <VersionLow>1</VersionLow>
    </REG_HEADER>
    <REG_ROOT>
-    <RegVer>1259470848</RegVer>
+    <RegVer>1259470856</RegVer>
     <HServerData>
      <Data>
       <Debug>
@@ -4012,7 +4013,7 @@
      </Data>
      <HW>
       <V_BUILD>288</V_BUILD>
-      <V_BUILD_SUB>0</V_BUILD_SUB>
+      <V_BUILD_SUB>2</V_BUILD_SUB>
       <V_MAJOR>9</V_MAJOR>
       <V_Mfix>1</V_Mfix>
       <V_MINOR>12</V_MINOR>

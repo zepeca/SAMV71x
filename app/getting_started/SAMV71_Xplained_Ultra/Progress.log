@@ -1,0 +1,6 @@
+INITIALIZING	Emulator: EDBG CMSIS-DAP   Debugger: On-chip
+LOADING	C:\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\getting_started.elf
+ANALYZING
+ANALYZING
+EMULATION	POD: Cortex (JTAG,SWD)   CPU: Cortex-M7
+DEBUG	PROTOCOL: SWD; RESET: SoC

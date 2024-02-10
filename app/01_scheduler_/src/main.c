@@ -21,6 +21,8 @@
 #include    "app_scheduler.h"
 /** LED control definitions */ 
 #include    "led_ctrl.h" 
+/** SW control definitions */ 
+#include    "sw_ctrl.h" 
 
 #include "chip.h"
 
@@ -50,6 +52,11 @@ extern int main( void )
 	/* SCB_EnableDCache(); */
 	/* Configure LEDs */
 	vfnLedCtrl_Configure(); 
+	/* Configure buttons */
+  #ifndef NO_PUSHBUTTON
+	printf( "Configure buttons.\n\r" ) ;
+	vfnConfigureButtons() ;
+  #endif
 	/* Configure Non-preemtive scheduler */
 	vfnScheduler_Init();
 	/* Start scheduler */

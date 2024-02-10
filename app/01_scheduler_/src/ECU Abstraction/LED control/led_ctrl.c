@@ -105,16 +105,25 @@ void vfnLedCtrl_BlinkingPattern(void)
 
 /*******************************************************************************/
 /*
+*  \brief Handler for LED 1 off.
 *carlosa to do
 *implement void vfnLed_1_off()
 *step 1 turn off led 1
 */
 /*******************************************************************************/
-
+void vfnLed_1_off(void)
+{
+    LED_Clear(0);
+}
 /*******************************************************************************/
 /*
+*  \brief Handler for LED 1 on.
 *carlosa to do
 *implement void vfnLed_1_on()
 *step 1 turn on led 1
 */
 /*******************************************************************************/
+void vfnLed_1_on(void)
+{
+    LED_Set(0);
+}

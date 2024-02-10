@@ -27,27 +27,27 @@
 /* EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                           */
 /* ---------------------------------------------------------------------------- */
 
-INPUT (E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\main.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\system_sam.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\syscalls.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\startup_sam.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\dbg_console.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\board_lowlevel.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\board_memories.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\led.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\wdt.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\pmc.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\tc.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\uart.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\pio.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\mpu.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\pio_it.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\supc.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\timetick.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\xdma_hardware_interface.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\xdmac.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\xdmad.o 
-E:\Examples_SVN\samples\Atmel\SAMV7x\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\exceptions.o)
+INPUT (C:\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\main.o 
+C:\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\system_sam.o 
+C:\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\syscalls.o 
+C:\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\startup_sam.o 
+C:\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\dbg_console.o 
+C:\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\board_lowlevel.o 
+C:\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\board_memories.o 
+C:\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\led.o 
+C:\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\wdt.o 
+C:\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\pmc.o 
+C:\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\tc.o 
+C:\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\uart.o 
+C:\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\pio.o 
+C:\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\mpu.o 
+C:\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\pio_it.o 
+C:\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\supc.o 
+C:\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\timetick.o 
+C:\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\xdma_hardware_interface.o 
+C:\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\xdmac.o 
+C:\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\xdmad.o 
+C:\SAMV71x\app\getting_started\SAMV71_Xplained_Ultra\Debug\exceptions.o)
 
 /*------------------------------------------------------------------------------
  *      Linker script for running in internal FLASH on the ATSAMV71Q21
