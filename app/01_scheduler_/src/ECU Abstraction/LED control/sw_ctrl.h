@@ -29,7 +29,7 @@
 void vfnConfigureButtons( void );
 
  /**  Handle process SW1 status change.. */
-void _Button_Handler( const Pin* pPin );
+void _Button_Handler( void );
 
 
 

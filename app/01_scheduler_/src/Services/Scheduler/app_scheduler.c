@@ -45,7 +45,7 @@ tSchedulingTask TimeTriggeredTasks[TASK_SCH_MAX_NUMBER_TIME_TASKS] =
     {   TASKS_10_MS,    TASKS_LIST_10MS,    SUSPENDED,      3  },
     {   TASKS_50_MS,    TASKS_LIST_50MS,    SUSPENDED,      2  },
     {   TASKS_100_MS,   TASKS_LIST_100MS,   SUSPENDED,      1  },
-    {   TASKS_button,   TASKS_LIST_button,  SUSPENDED,      4  },
+    {   TASKS_button,   TASKS_LIST_button,  SUSPENDED,      5  },
 };
 
 /*****************************************************************************************************
@@ -339,11 +339,11 @@ void vfnScheduler_Callback(void)
 /*
 *carlosa to do
 *implement 
-*void vfnButton_1_Handler() (function is called when button 1 is pressed)
+*void vfnButton_Handler() (function is called when button 1 is pressed)
 *step 1 call vfnLed_1_on();
 *step 2 call vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_button]);
 */
-void vfnButton_1_Handler(void)
+void vfnButton_Handler(void)
 {
   vfnLed_1_on();
   vfnScheduler_TaskActivate( &TimeTriggeredTasks[TASKS_button] );

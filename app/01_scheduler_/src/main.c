@@ -50,13 +50,13 @@ extern int main( void )
 	/* Enable I and D cache */
 	SCB_EnableICache();
 	/* SCB_EnableDCache(); */
+	
 	/* Configure LEDs */
 	vfnLedCtrl_Configure(); 
-  /* Configure buttons */
-  //#ifndef NO_PUSHBUTTON
-  printf( "Configure buttons.\n\r" ) ;
-  vfnConfigureButtons() ;
-  //#endif
+
+	/*configure buttons*/
+  	vfnConfigureButtons() ;
+
 	/* Configure Non-preemtive scheduler */
 	vfnScheduler_Init();
 	/* Start scheduler */

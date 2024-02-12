@@ -89,11 +89,8 @@ void vfnScheduler_Stop(void);
 /** Multi-thread round robin task scheduler */
 void vfnTask_Scheduler(void);
 
-/*carlosa vfnButton_1_Handler hanlder*/
-//void vfnButton_1_Handler(void);
-
-/**  Change active states when button events happened. */
-void ProcessButtonEvt( uint8_t ucButton );
+/*carlosa vfnButton_Handler hanlder*/
+extern void vfnButton_Handler(void);
 
 /*******************************************************************************/
 

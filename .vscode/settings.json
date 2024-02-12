@@ -2,7 +2,10 @@
   "files.associations": {
     "*.c": "c",
     "type_traits": "c",
-    "stdio.h": "c"
+    "stdio.h": "c",
+    "board.h": "c",
+    "app_scheduler.h": "c",
+    "pio.h": "c"
   },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",
