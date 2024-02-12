@@ -68,6 +68,7 @@ void vfnLedCtrl_BlinkingPattern(void)
 
 /*
 *carlosa to do
+cesar done
 *remove toogle for led 1
 */
 
@@ -80,19 +81,19 @@ void vfnLedCtrl_BlinkingPattern(void)
     {
         case  1:
             LED_Set(0);
-            LED_Set(1);
+            //LED_Set(1);
             break;
         case  11:
             LED_Set(0);
-            LED_Set(1);
+            //LED_Set(1);
             break;
         case  3:
             LED_Clear(0);
-            LED_Clear(1);
+            //LED_Clear(1);
             break;
         case  13:
             LED_Clear(0);
-            LED_Clear(1);
+            //LED_Clear(1);
             break;
         case 101:
             gu8Index = 0;
@@ -113,7 +114,7 @@ void vfnLedCtrl_BlinkingPattern(void)
 /*******************************************************************************/
 void vfnLed_1_off(void)
 {
-    LED_Clear(0);
+    LED_Clear(1);
 }
 /*******************************************************************************/
 /*
@@ -125,5 +126,5 @@ void vfnLed_1_off(void)
 /*******************************************************************************/
 void vfnLed_1_on(void)
 {
-    LED_Set(0);
+    LED_Set(1);
 }
