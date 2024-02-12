@@ -42,6 +42,7 @@ C:\SAMV71x\app\01_scheduler_\SAMV71_Xplained_Ultra\Debug\mpu.o
 C:\SAMV71x\app\01_scheduler_\SAMV71_Xplained_Ultra\Debug\exceptions.o 
 C:\SAMV71x\app\01_scheduler_\SAMV71_Xplained_Ultra\Debug\systick.o 
 C:\SAMV71x\app\01_scheduler_\SAMV71_Xplained_Ultra\Debug\wdt.o 
+C:\SAMV71x\app\01_scheduler_\SAMV71_Xplained_Ultra\Debug\pio_it.o 
 C:\SAMV71x\app\01_scheduler_\SAMV71_Xplained_Ultra\Debug\led_ctrl.o 
 C:\SAMV71x\app\01_scheduler_\SAMV71_Xplained_Ultra\Debug\sw_ctrl.o)
 

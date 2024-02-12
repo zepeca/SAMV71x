@@ -52,11 +52,11 @@ extern int main( void )
 	/* SCB_EnableDCache(); */
 	/* Configure LEDs */
 	vfnLedCtrl_Configure(); 
-	/* Configure buttons */
-  #ifndef NO_PUSHBUTTON
-	printf( "Configure buttons.\n\r" ) ;
-	vfnConfigureButtons() ;
-  #endif
+  /* Configure buttons */
+  //#ifndef NO_PUSHBUTTON
+  printf( "Configure buttons.\n\r" ) ;
+  vfnConfigureButtons() ;
+  //#endif
 	/* Configure Non-preemtive scheduler */
 	vfnScheduler_Init();
 	/* Start scheduler */

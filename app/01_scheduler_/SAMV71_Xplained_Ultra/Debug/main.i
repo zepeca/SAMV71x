@@ -26856,7 +26856,10 @@ void vfnScheduler_Stop(void);
 void vfnTask_Scheduler(void);
 
 
-void vfnButton_1_Handler(void);
+
+
+
+void ProcessButtonEvt( uint8_t ucButton );
 # 22 "C:\\SAMV71x\\app\\01_scheduler_\\src\\main.c" 2
 
 # 1 "C:\\SAMV71x\\app\\01_scheduler_\\src\\ECU Abstraction\\LED control/led_ctrl.h" 1
@@ -26899,7 +26902,12 @@ extern int main( void )
 
 
  vfnLedCtrl_Configure();
-# 63 "C:\\SAMV71x\\app\\01_scheduler_\\src\\main.c"
+
+
+  printf( "Configure buttons.\n\r" ) ;
+  vfnConfigureButtons() ;
+
+
  vfnScheduler_Init();
 
  vfnScheduler_Start();

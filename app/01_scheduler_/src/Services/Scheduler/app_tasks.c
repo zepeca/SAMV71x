@@ -61,6 +61,6 @@ void TASKS_LIST_100MS( void )
 */ 
 void TASKS_LIST_button( void )
 {
-    vfnLed_1_on();
+    vfnLed_1_off();
 }
 

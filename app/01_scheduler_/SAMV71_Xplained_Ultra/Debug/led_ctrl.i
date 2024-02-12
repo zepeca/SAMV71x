@@ -18770,13 +18770,7 @@ void vfnLedCtrl_Configure( void )
 # 66 "C:\\SAMV71x\\app\\01_scheduler_\\src\\ECU Abstraction\\LED control\\led_ctrl.c"
 void vfnLedCtrl_BlinkingPattern(void)
 {
-
-
-
-
-
-
-
+# 76 "C:\\SAMV71x\\app\\01_scheduler_\\src\\ECU Abstraction\\LED control\\led_ctrl.c"
  static uint8_t gu8Index;
 
     (gu8Index)++;
@@ -18785,19 +18779,19 @@ void vfnLedCtrl_BlinkingPattern(void)
     {
         case 1:
             LED_Set(0);
-            LED_Set(1);
+
             break;
         case 11:
             LED_Set(0);
-            LED_Set(1);
+
             break;
         case 3:
             LED_Clear(0);
-            LED_Clear(1);
+
             break;
         case 13:
             LED_Clear(0);
-            LED_Clear(1);
+
             break;
         case 101:
             gu8Index = 0;
@@ -18806,13 +18800,13 @@ void vfnLedCtrl_BlinkingPattern(void)
             break;
     }
 }
-# 114 "C:\\SAMV71x\\app\\01_scheduler_\\src\\ECU Abstraction\\LED control\\led_ctrl.c"
+# 115 "C:\\SAMV71x\\app\\01_scheduler_\\src\\ECU Abstraction\\LED control\\led_ctrl.c"
 void vfnLed_1_off(void)
 {
-    LED_Clear(0);
+    LED_Clear(1);
 }
-# 126 "C:\\SAMV71x\\app\\01_scheduler_\\src\\ECU Abstraction\\LED control\\led_ctrl.c"
+# 127 "C:\\SAMV71x\\app\\01_scheduler_\\src\\ECU Abstraction\\LED control\\led_ctrl.c"
 void vfnLed_1_on(void)
 {
-    LED_Set(0);
+    LED_Set(1);
 }

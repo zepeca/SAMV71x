@@ -31,8 +31,7 @@ void vfnConfigureButtons( void );
  /**  Handle process SW1 status change.. */
 void _Button_Handler( const Pin* pPin );
 
-/**  Change active states when button events happened. */
-void ProcessButtonEvt( uint8_t ucButton );
+
 
 /**************************************************************************************************/
 

@@ -18832,7 +18832,10 @@ void vfnScheduler_Stop(void);
 void vfnTask_Scheduler(void);
 
 
-void vfnButton_1_Handler(void);
+
+
+
+void ProcessButtonEvt( uint8_t ucButton );
 # 15 "C:\\SAMV71x\\app\\01_scheduler_\\src\\Services\\Scheduler\\app_scheduler.c" 2
 
 # 1 "C:\\SAMV71x\\app\\01_scheduler_\\src\\Services\\Scheduler\\app_tasks.h" 1
@@ -19085,4 +19088,10 @@ void vfnScheduler_Callback(void)
             }
         }
     }
+}
+# 346 "C:\\SAMV71x\\app\\01_scheduler_\\src\\Services\\Scheduler\\app_scheduler.c"
+void vfnButton_1_Handler(void)
+{
+  vfnLed_1_on();
+  vfnScheduler_TaskActivate( &TimeTriggeredTasks[TASKS_button] );
 }

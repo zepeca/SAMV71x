@@ -206,7 +206,7 @@ TASKS_LIST_button:
 	add	r7, sp, #0
 	.cfi_def_cfa_register 7
 	.loc 1 64 0
-	bl	vfnLed_1_on
+	bl	vfnLed_1_off
 	.loc 1 65 0
 	pop	{r7, pc}
 	.cfi_endproc

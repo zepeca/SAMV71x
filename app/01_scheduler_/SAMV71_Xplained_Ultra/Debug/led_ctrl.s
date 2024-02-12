@@ -69,14 +69,14 @@ vfnLedCtrl_BlinkingPattern:
 	.cfi_offset 14, -4
 	add	r7, sp, #0
 	.cfi_def_cfa_register 7
-	.loc 1 77 0
+	.loc 1 78 0
 	ldr	r3, .L11
 	ldrb	r3, [r3]	@ zero_extendqisi2
 	adds	r3, r3, #1
 	uxtb	r2, r3
 	ldr	r3, .L11
 	strb	r2, [r3]
-	.loc 1 79 0
+	.loc 1 80 0
 	ldr	r3, .L11
 	ldrb	r3, [r3]	@ zero_extendqisi2
 	cmp	r3, #11
@@ -87,61 +87,49 @@ vfnLedCtrl_BlinkingPattern:
 	beq	.L6
 	cmp	r3, #3
 	beq	.L7
-	.loc 1 101 0
+	.loc 1 102 0
 	b	.L2
 .L5:
-	.loc 1 79 0
+	.loc 1 80 0
 	cmp	r3, #13
 	beq	.L8
 	cmp	r3, #101
 	beq	.L9
-	.loc 1 101 0
+	.loc 1 102 0
 	b	.L2
 .L6:
-	.loc 1 82 0
+	.loc 1 83 0
 	movs	r0, #0
 	bl	LED_Set
-	.loc 1 83 0
-	movs	r0, #1
-	bl	LED_Set
-	.loc 1 84 0
+	.loc 1 85 0
 	b	.L2
 .L4:
-	.loc 1 86 0
+	.loc 1 87 0
 	movs	r0, #0
 	bl	LED_Set
-	.loc 1 87 0
-	movs	r0, #1
-	bl	LED_Set
-	.loc 1 88 0
+	.loc 1 89 0
 	b	.L2
 .L7:
-	.loc 1 90 0
+	.loc 1 91 0
 	movs	r0, #0
 	bl	LED_Clear
-	.loc 1 91 0
-	movs	r0, #1
-	bl	LED_Clear
-	.loc 1 92 0
+	.loc 1 93 0
 	b	.L2
 .L8:
-	.loc 1 94 0
+	.loc 1 95 0
 	movs	r0, #0
 	bl	LED_Clear
-	.loc 1 95 0
-	movs	r0, #1
-	bl	LED_Clear
-	.loc 1 96 0
+	.loc 1 97 0
 	b	.L2
 .L9:
-	.loc 1 98 0
+	.loc 1 99 0
 	ldr	r3, .L11
 	movs	r2, #0
 	strb	r2, [r3]
-	.loc 1 99 0
+	.loc 1 100 0
 	nop
 .L2:
-	.loc 1 103 0
+	.loc 1 104 0
 	pop	{r7, pc}
 .L12:
 	.align	2
@@ -157,7 +145,7 @@ vfnLedCtrl_BlinkingPattern:
 	.type	vfnLed_1_off, %function
 vfnLed_1_off:
 .LFB129:
-	.loc 1 115 0
+	.loc 1 116 0
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 1, uses_anonymous_args = 0
@@ -167,10 +155,10 @@ vfnLed_1_off:
 	.cfi_offset 14, -4
 	add	r7, sp, #0
 	.cfi_def_cfa_register 7
-	.loc 1 116 0
-	movs	r0, #0
-	bl	LED_Clear
 	.loc 1 117 0
+	movs	r0, #1
+	bl	LED_Clear
+	.loc 1 118 0
 	pop	{r7, pc}
 	.cfi_endproc
 .LFE129:
@@ -182,7 +170,7 @@ vfnLed_1_off:
 	.type	vfnLed_1_on, %function
 vfnLed_1_on:
 .LFB130:
-	.loc 1 127 0
+	.loc 1 128 0
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 1, uses_anonymous_args = 0
@@ -192,10 +180,10 @@ vfnLed_1_on:
 	.cfi_offset 14, -4
 	add	r7, sp, #0
 	.cfi_def_cfa_register 7
-	.loc 1 128 0
-	movs	r0, #0
-	bl	LED_Set
 	.loc 1 129 0
+	movs	r0, #1
+	bl	LED_Set
+	.loc 1 130 0
 	pop	{r7, pc}
 	.cfi_endproc
 .LFE130:
@@ -323,7 +311,7 @@ gu8Index.6883:
 	.uleb128 0x8
 	.4byte	.LASF12887
 	.byte	0x1
-	.byte	0x4b
+	.byte	0x4c
 	.4byte	0x8c
 	.uleb128 0x5
 	.byte	0x3
@@ -332,7 +320,7 @@ gu8Index.6883:
 	.uleb128 0x6
 	.4byte	.LASF12885
 	.byte	0x1
-	.byte	0x72
+	.byte	0x73
 	.4byte	.LFB129
 	.4byte	.LFE129-.LFB129
 	.uleb128 0x1
@@ -340,7 +328,7 @@ gu8Index.6883:
 	.uleb128 0x6
 	.4byte	.LASF12886
 	.byte	0x1
-	.byte	0x7e
+	.byte	0x7f
 	.4byte	.LFB130
 	.4byte	.LFE130-.LFB130
 	.uleb128 0x1

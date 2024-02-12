@@ -343,13 +343,9 @@ void vfnScheduler_Callback(void)
 *step 1 call vfnLed_1_on();
 *step 2 call vfnScheduler_TaskActivate(&TimeTriggeredTasks[TASKS_button]);
 */
-/*
-static void ProcessButtonEvt( uint8_t ucButton )
+void vfnButton_1_Handler(void)
 {
-	if ( ucButton == 0 ) {
-			vfnScheduler_TaskActivate( &TimeTriggeredTasks[TASKS_button] );
-		
-	}
+  vfnLed_1_on();
+  vfnScheduler_TaskActivate( &TimeTriggeredTasks[TASKS_button] );
 }
-*/
 /***************************************************************************************************/

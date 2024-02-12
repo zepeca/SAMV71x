@@ -26748,64 +26748,133 @@ extern int _write( int file, char *ptr, int len );
 
 #define PINS_VBUS_EN {PIO_PC16, PIOC, ID_PIOC, PIO_OUTPUT_1, PIO_DEFAULT}
 # 90 "C:\\SAMV71x\\app\\01_scheduler_\\src\\ECU Abstraction\\LED control\\sw_ctrl.c" 2
-# 98 "C:\\SAMV71x\\app\\01_scheduler_\\src\\ECU Abstraction\\LED control\\sw_ctrl.c"
+# 1 "C:\\SAMV71x\\app\\01_scheduler_\\src\\Services\\Scheduler/app_scheduler.h" 1
+# 11 "C:\\SAMV71x\\app\\01_scheduler_\\src\\Services\\Scheduler/app_scheduler.h"
+#define APP_SCHEDULER_H 
+
+
+
+# 1 "C:\\SAMV71x\\hal\\libchip_samv7/compiler.h" 1
+# 16 "C:\\SAMV71x\\app\\01_scheduler_\\src\\Services\\Scheduler/app_scheduler.h" 2
+# 1 "C:\\SAMV71x\\app\\01_scheduler_\\src\\Commons/typedefs.h" 1
+# 12 "C:\\SAMV71x\\app\\01_scheduler_\\src\\Commons/typedefs.h"
+#define TYPEDEFS_H 
+# 23 "C:\\SAMV71x\\app\\01_scheduler_\\src\\Commons/typedefs.h"
+#define UINT8 __attribute__ ((aligned (1))) uint8_t
+#define UINT16 __attribute__ ((aligned (2))) uint16_t
+#define UINT32 __attribute__ ((aligned (4))) uint32_t
+
+#define INT8 __attribute__ ((aligned (1))) int8_t
+#define INT16 __attribute__ ((aligned (2))) int16_t
+#define INT32 __attribute__ ((aligned (4))) int32_t
+
+
+#define VUINT8 __attribute__ ((aligned (1))) volatile uint8_t
+#define VUINT16 __attribute__ ((aligned (2))) volatile uint16_t
+#define VUINT32 __attribute__ ((aligned (4))) volatile uint32_t
+
+#define VINT8 __attribute__ ((aligned (1))) volatile int8_t
+#define VINT16 __attribute__ ((aligned (2))) volatile int16_t
+#define VINT32 __attribute__ ((aligned (4))) volatile int32_t
+
+typedef void ( * tPtr_to_function )( void );
+# 17 "C:\\SAMV71x\\app\\01_scheduler_\\src\\Services\\Scheduler/app_scheduler.h" 2
+
+
+
+
+typedef enum
+{
+    SUSPENDED,
+    READY,
+    RUNNING
+}tTaskStates;
+
+
+typedef enum
+{
+    TASKS_1_MS,
+    TASKS_2_MS_A,
+    TASKS_2_MS_B,
+    TASKS_10_MS,
+    TASKS_50_MS,
+    TASKS_100_MS,
+    TASKS_button,
+    TASK_NULL,
+}tSchedulerTasks_ID;
+
+typedef struct
+{
+    tSchedulerTasks_ID TaskId;
+    tPtr_to_function ptrTask;
+    tTaskStates enTaskState;
+    uint8_t u8Priority;
+
+}tSchedulingTask;
+
+
+
+
+
+
+#define ENABLE_OL_VERIFICATION 0
+#define ENABLE_1MSTEST 0
+#define ENABLE_10MSTEST 0
+#define MAX_PRIO 5
+
+
+#define TASK_SCHEDULER_INIT 0x00u
+#define TASK_SCHEDULER_RUNNING 0x01u
+#define TASK_SCHEDULER_OVERLOAD_1MS 0x02u
+#define TASK_SCHEDULER_OVERLOAD_2MS_A 0x03u
+#define TASK_SCHEDULER_OVERLOAD_2MS_B 0x04u
+#define TASK_SCHEDULER_HALTED 0xAAu
+
+#define TASK_SCH_MAX_NUMBER_TIME_TASKS 0x07u
+
+#define TASK_SCHEDULER_BASE_FREQ 2000
+
+
+
+extern tSchedulingTask TimeTriggeredTasks[0x07u];
+
+
+
+
+
+
+void vfnScheduler_Init(void);
+
+
+void vfnScheduler_Start(void);
+
+
+void vfnScheduler_Stop(void);
+
+
+void vfnTask_Scheduler(void);
+
+
+
+
+
+void ProcessButtonEvt( uint8_t ucButton );
+# 91 "C:\\SAMV71x\\app\\01_scheduler_\\src\\ECU Abstraction\\LED control\\sw_ctrl.c" 2
+# 1 "C:\\SAMV71x\\hal\\libchip_samv7\\include/pio_it.h" 1
+# 92 "C:\\SAMV71x\\app\\01_scheduler_\\src\\ECU Abstraction\\LED control\\sw_ctrl.c" 2
+# 1 "C:\\SAMV71x\\hal\\libchip_samv7\\include/pio.h" 1
+# 93 "C:\\SAMV71x\\app\\01_scheduler_\\src\\ECU Abstraction\\LED control\\sw_ctrl.c" 2
+# 102 "C:\\SAMV71x\\app\\01_scheduler_\\src\\ECU Abstraction\\LED control\\sw_ctrl.c"
 #define IRQ_PRIOR_PIO 0
 
 
-#define BLINK_PERIOD 1000
 
 
-
-
-
-
-volatile _Bool bLed0Active = 1 ;
-
-
-volatile _Bool bLed1Active = 1 ;
-
-
-volatile uint32_t dwTimeStamp = 0;
-
-
-volatile uint32_t dwTcCounter = 0;
-
-
-volatile uint32_t ig_test = 0;
-# 132 "C:\\SAMV71x\\app\\01_scheduler_\\src\\ECU Abstraction\\LED control\\sw_ctrl.c"
-void ProcessButtonEvt( uint8_t ucButton )
+Pin pinPB1[] = {{(1u << 12), ((Pio *)0x400E1000U), (11), 4, (1 << 0) | (1 << 3) | (0 | (1 << 6) | (1 << 4))}};
+# 118 "C:\\SAMV71x\\app\\01_scheduler_\\src\\ECU Abstraction\\LED control\\sw_ctrl.c"
+void _Button_Handler( const Pin* pPin )
 {
- if ( ucButton == 0 ) {
-  bLed0Active = !bLed0Active ;
-  if ( !bLed0Active ) {
-   LED_Clear( 0 );
-  }
- }
- else
- {
-  bLed1Active = !bLed1Active ;
-
-
-  if ( bLed1Active ) {
-   LED_Set( 1 );
-  }
-
-  else{
-   LED_Clear( 1 );
-  }
- }
-}
-# 204 "C:\\SAMV71x\\app\\01_scheduler_\\src\\ECU Abstraction\\LED control\\sw_ctrl.c"
-static void _DBGU_Handler( void )
-{
- uint8_t key;
- if ( !DBG_IsRxReady( ) ) return ;
- key = DBG_GetChar( ) ;
- switch ( key ) {
- case '1': case '2':
-  ProcessButtonEvt( key - '1' ) ;
-  break;
- }
+ vfnButton_1_Handler();
 }
 
 
@@ -26813,29 +26882,26 @@ static void _DBGU_Handler( void )
 
 
 
-static void _ConfigureLeds( void )
+
+void vfnConfigureButtons( void )
 {
- LED_Configure( 0 ) ;
- LED_Configure( 1 ) ;
-}
+
+ PIO_Configure( pinPB1, 1 ) ;
 
 
 
+ PIO_SetDebounceFilter( pinPB1, 10 ) ;
 
 
-void TC0_Handler(void)
-{
- volatile uint32_t dummy;
 
- dummy = ((Tc *)0x4000C000U)->TC_CHANNEL[ 0 ].TC_SR;
+ PIO_ConfigureIt( pinPB1, _Button_Handler ) ;
 
 
- if(bLed1Active) {
-  LED_Toggle( 1 );
-  printf( "2 " );
- }
 
- _DBGU_Handler( ) ;
+ NVIC_EnableIRQ( (IRQn_Type)(*pinPB1).id ) ;
 
+
+
+ PIO_EnableIt( pinPB1 ) ;
 
 }

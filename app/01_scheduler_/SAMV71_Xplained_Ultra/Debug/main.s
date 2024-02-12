@@ -101,6 +101,10 @@ cpu_irq_critical_section_counter:
 	.space	4
 cpu_irq_prev_interrupt_state:
 	.space	1
+	.section	.rodata
+	.align	2
+.LC0:
+	.ascii	"Configure buttons.\012\015\000"
 	.text
 	.align	2
 	.global	main
@@ -127,19 +131,25 @@ main:
 	bl	SCB_EnableICache
 	.loc 3 54 0
 	bl	vfnLedCtrl_Configure
-	.loc 3 63 0
+	.loc 3 57 0
+	ldr	r0, .L6+4
+	bl	printf
+	.loc 3 58 0
+	bl	vfnConfigureButtons
+	.loc 3 61 0
 	bl	vfnScheduler_Init
-	.loc 3 65 0
+	.loc 3 63 0
 	bl	vfnScheduler_Start
 .L5:
-	.loc 3 70 0 discriminator 1
+	.loc 3 68 0 discriminator 1
 	bl	vfnTask_Scheduler
-	.loc 3 71 0 discriminator 1
+	.loc 3 69 0 discriminator 1
 	b	.L5
 .L7:
 	.align	2
 .L6:
 	.word	1074665552
+	.word	.LC0
 	.cfi_endproc
 .LFE283:
 	.size	main, .-main

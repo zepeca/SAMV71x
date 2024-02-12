@@ -87,6 +87,9 @@
  *----------------------------------------------------------------------------*/
 
 #include "board.h"
+#include "app_scheduler.h"
+#include "pio_it.h"
+#include "pio.h"
 #include <stdbool.h>
 #include <stdio.h>
 
@@ -95,64 +98,18 @@
  *----------------------------------------------------------------------------*/
 
 /** IRQ priority for PIO (The lower the value, the greater the priority) */
-#define IRQ_PRIOR_PIO    0
-	
-/** LED0 blink time, LED1 blink half this time, in ms */
-#define BLINK_PERIOD        1000
 
+#define IRQ_PRIOR_PIO    0
 /*----------------------------------------------------------------------------
  *        Local variables
  *----------------------------------------------------------------------------*/
 
-/** LED0 blinking control. */
-volatile bool bLed0Active = true ;
-
-/** LED1 blinking control. */
-volatile bool bLed1Active = true ;
-
-/** Global timestamps in milliseconds since start of application */
-volatile uint32_t dwTimeStamp = 0;
-
-/** Global timestamps in milliseconds since start of application */
-volatile uint32_t dwTcCounter = 0;
-
-/** iSYSTEM global Test **/
-volatile uint32_t ig_test = 0;
-
+Pin pinPB1[] = {PIN_PUSHBUTTON_1};
 
 /*----------------------------------------------------------------------------
  *        Local functions
  *----------------------------------------------------------------------------*/
 
-/**
- *  \brief Process Buttons Events
- *
- *  Change active states of LEDs when corresponding button events happened.
- */
-void ProcessButtonEvt( uint8_t ucButton )
-{
-	if ( ucButton == 0 ) {
-		bLed0Active = !bLed0Active ;
-		if ( !bLed0Active ) {
-			LED_Clear( 0 );
-		}
-	}
-	else
-	{
-		bLed1Active = !bLed1Active ;
-
-		/* Enable LED#2 and TC if they were disabled */
-		if ( bLed1Active ) {
-			LED_Set( 1 );
-		}
-		/* Disable LED#2 and TC if they were enabled */
-		else{
-			LED_Clear( 1 );
-		}
-	}
-}
-
-#ifndef NO_PUSHBUTTON
 /**
  *  \brief Handler for Button 1 rising edge interrupt.
  *
@@ -160,9 +117,7 @@ void ProcessButtonEvt( uint8_t ucButton )
  */
 void _Button_Handler( const Pin* pPin )
 {
-	if ( pPin == &pinPB1 ) {
-		ProcessButtonEvt( 0 ) ;
-	}
+	vfnButton_1_Handler();
 }
 
 /**
@@ -174,74 +129,27 @@ void _Button_Handler( const Pin* pPin )
 void vfnConfigureButtons( void )
 {
 	/* Configure PIO as inputs. */
-	PIO_Configure( &pinPB1, 1 ) ;
+	PIO_Configure( pinPB1, 1 ) ;
 	//PIO_Configure( &pinPB2, 1 ) ;
 
 	/* Adjust PIO denounce filter parameters, uses 10 Hz filter. */
-	PIO_SetDebounceFilter( &pinPB1, 10 ) ;
+	PIO_SetDebounceFilter( pinPB1, 10 ) ;
 	//PIO_SetDebounceFilter( &pinPB2, 10 ) ;
 
 	/* Initialize PIO interrupt handlers, see PIO definition in board.h. */
-	PIO_ConfigureIt( &pinPB1, _Button_Handler ) ; /* Interrupt on rising edge  */
+	PIO_ConfigureIt( pinPB1, _Button_Handler ) ; /* Interrupt on rising edge  */
 	//PIO_ConfigureIt( &pinPB2, _Button2_Handler ) ; /* Interrupt on rising edge */
 
 	/* Enable PIO controller IRQs. */
-	NVIC_EnableIRQ( (IRQn_Type)pinPB1.id ) ;
+	NVIC_EnableIRQ( (IRQn_Type)(*pinPB1).id ) ;
 	//NVIC_EnableIRQ( (IRQn_Type)pinPB2.id ) ;
 
 	/* Enable PIO line interrupts. */
-	PIO_EnableIt( &pinPB1 ) ;
+	PIO_EnableIt( pinPB1 ) ;
 	//PIO_EnableIt( &pinPB2 ) ;
 }
 
-#else
-
-/**
- *  \brief Handler for DBGU input.
- *
- *  Handle process LED1 or LED2 status change.
- */
-static void _DBGU_Handler( void )
-{
-	uint8_t key;
-	if ( !DBG_IsRxReady( ) ) return ;
-	key = DBG_GetChar( ) ;
-	switch ( key ) {
-	case '1': case '2':
-		ProcessButtonEvt( key - '1' ) ;
-		break;
-	}
-}
-#endif
-/**
- *  \brief Configure LEDs
- *
- *  Configures LEDs \#1 and \#2 (cleared by default).
- */
-static void _ConfigureLeds( void )
-{
-	LED_Configure( 0 ) ;
-	LED_Configure( 1 ) ;
-}
 
 
-/**
- *  Interrupt handler for TC0 interrupt. Toggles the state of LED\#2.
- */
-void TC0_Handler(void)
-{
-	volatile uint32_t dummy;
-	/* Clear status bit to acknowledge interrupt */
-	dummy = TC0->TC_CHANNEL[ 0 ].TC_SR;
 
-	/** Toggle LED state. */
-	if(bLed1Active) {
-		LED_Toggle( 1 );
-		printf( "2 " );
-	}
-#ifdef NO_PUSHBUTTON
-	_DBGU_Handler( ) ;
-#endif
-
-}
 
