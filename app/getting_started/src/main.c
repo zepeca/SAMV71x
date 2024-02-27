@@ -295,19 +295,6 @@ static void _ConfigureTc(void)
 /*----------------------------------------------------------------------------
  *        Exported functions
  *----------------------------------------------------------------------------*/
-#if TEST_HEAP_MEM_SECTION
-/**
- *  \brief set all heap section as 0x0
- *
- *  \return Unused (ANSI-C compatibility).
- */
-	/*carlosa set all heap section as 0x1*/
-	clear_mem_heap(){
-
-
-		for(_heap_mem_start;)
-	}
-#endif
 
 /**
  *  \brief getting-started Application entry point.
@@ -351,10 +338,8 @@ extern int main( void )
 
 #endif
 
-/*carlosa set heap_memalloc section as 0x1*/
+/*carlosa set heap_memalloc section as 0x5*/
 #if TEST_HEAP_MEM_SECTION
-	clear_mem_heap();
-#else
 	memset(&_heap_mem_start, 0x5,heap_memsize);
 #endif
 
