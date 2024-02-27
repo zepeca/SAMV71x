@@ -89,6 +89,7 @@
 #include "board.h"
 #include <stdbool.h>
 #include <stdio.h>
+#include <string.h>
 
 /*----------------------------------------------------------------------------
  *        Local definitions
@@ -99,6 +100,8 @@
 
 /** LED0 blink time, LED1 blink half this time, in ms */
 #define BLINK_PERIOD        1000
+
+#define TEST_HEAP_MEM_SECTION FALSE
 
 /*----------------------------------------------------------------------------
  *        Local variables
@@ -118,6 +121,10 @@ volatile uint32_t dwTcCounter = 0;
 
 /** iSYSTEM global Test **/
 volatile uint32_t ig_test = 0;
+
+extern uint32_t _heap_mem_start;
+extern uint32_t _heap_mem_end;
+extern uint32_t heap_memsize;
 
 /*----------------------------------------------------------------------------
  *        Local functions
@@ -288,6 +295,20 @@ static void _ConfigureTc(void)
 /*----------------------------------------------------------------------------
  *        Exported functions
  *----------------------------------------------------------------------------*/
+#if TEST_HEAP_MEM_SECTION
+/**
+ *  \brief set all heap section as 0x0
+ *
+ *  \return Unused (ANSI-C compatibility).
+ */
+	/*carlosa set all heap section as 0x1*/
+	clear_mem_heap(){
+
+
+		for(_heap_mem_start;)
+	}
+#endif
+
 /**
  *  \brief getting-started Application entry point.
  *
@@ -328,6 +349,13 @@ extern int main( void )
 	printf( "Press 1 to Start/Stop the blue LED D1 blinking.\n\r" ) ;
 	printf( "Press 2 to Start/Stop the red LED D2 blinking.\n\r" ) ;
 
+#endif
+
+/*carlosa set heap_memalloc section as 0x1*/
+#if TEST_HEAP_MEM_SECTION
+	clear_mem_heap();
+#else
+	memset(&_heap_mem_start, 0x5,heap_memsize);
 #endif
 
 	while ( 1 ) {

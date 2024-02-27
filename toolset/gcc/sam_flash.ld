@@ -90,7 +90,17 @@ SECTIONS
     . = ALIGN(4);
     _etext = .;
 
-    .relocate : AT (_etext)
+    /*carlosa creation of heap_memalloc section*/
+    .heap_mem_section (NOLOAD): AT(_etext)
+    {
+        . = ALIGN(4);
+        _heap_mem_start = .;
+        . = . + heap_memsize;
+        . = ALIGN(4);
+        _heap_mem_end = .;
+    } > heap_memalloc
+
+    .relocate : AT(_heap_mem_end)
     {
         . = ALIGN(4);
         _srelocate = .;
