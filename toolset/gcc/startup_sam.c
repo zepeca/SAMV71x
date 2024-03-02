@@ -30,12 +30,19 @@
 
 #include "samv71.h"
 
+/* carlosa Mem_Alloc - defines for testing the heap_mem_section*/
+#define heap_mem_section_TEST 1   /*1 for enabling the testing the heap_mem_section*/
+#define heap_mem_section_TEST_VALUE 0x04030201
+
+
 /* Initialize segments */
 extern uint32_t _sfixed;
 extern uint32_t _efixed;
 extern uint32_t _etext;
 extern uint32_t _srelocate;
 extern uint32_t _erelocate;
+extern uint32_t _heap_mem_start;
+extern uint32_t _heap_mem_end;
 extern uint32_t _szero;
 extern uint32_t _ezero;
 extern uint32_t _sstack;
@@ -152,7 +159,6 @@ void Dummy_Handler(void);
 #pragma weak RSWDT_Handler=Dummy_Handler
 #pragma weak CCF_Handler=Dummy_Handler
 #pragma weak CCW_Handler=Dummy_Handler
-
 
 /* Exception Table */
 __attribute__ ((section(".vectors")))
@@ -349,6 +355,15 @@ void Reset_Handler(void)
 		for (pDest = &_szero; pDest < &_ezero;) {
 				*pDest++ = 0;
 		}
+
+		/* carlosa Mem_Alloc - if heap_mem_section testing strategy using the zero segment clear strat*/
+#if heap_mem_section_TEST
+		for(pDest = &_heap_mem_start; pDest < &_heap_mem_end;){
+			*pDest++ = heap_mem_section_TEST_VALUE;
+		}
+#else
+		/* carlosa Mem_Alloc to-do - call the Mem_Alloc_Init function*/
+#endif /*TEST_heap_mem_section*/
 
 		/* Set the vector table base address */
 		pSrc = (uint32_t *) & _sfixed;

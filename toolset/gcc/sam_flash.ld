@@ -90,8 +90,8 @@ SECTIONS
     . = ALIGN(4);
     _etext = .;
 
-    /*carlosa creation of heap_memalloc section*/
-    .heap_mem_section (NOLOAD): AT(_etext)
+    /* carlosa Mem_Alloc - creation of heap_memalloc section*/
+    .heap_mem_section (NOLOAD) : AT(_etext)
     {
         . = ALIGN(4);
         _heap_mem_start = .;
