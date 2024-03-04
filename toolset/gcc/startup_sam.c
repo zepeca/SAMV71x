@@ -29,6 +29,7 @@
 
 
 #include "samv71.h"
+#include "ECU Abstraction/mem_alloc.h"
 
 /* carlosa Mem_Alloc - defines for testing the heap_mem_section*/
 #define heap_mem_section_TEST 1   /*1 for enabling the testing the heap_mem_section*/
@@ -362,7 +363,9 @@ void Reset_Handler(void)
 			*pDest++ = heap_mem_section_TEST_VALUE;
 		}
 #else
-		/* carlosa Mem_Alloc to-do - call the Mem_Alloc_Init function*/
+		/* JulianA Mem_Alloc - call the Mem_Alloc_Init function*/
+		Mem_Init();
+		
 #endif /*TEST_heap_mem_section*/
 
 		/* Set the vector table base address */

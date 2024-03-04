@@ -317,25 +317,38 @@
       <LinkGroup.5>
        <LinkGroupName>ECU Abstraction</LinkGroupName>
        <File.0>
-        <FileName>$(IRFDIR)..\src\ECU Abstraction\LED control\led_ctrl.h</FileName>
-       </File.0>
-       <File.1>
-        <FileName>$(IRFDIR)..\src\ECU Abstraction\LED control\led_ctrl.c</FileName>
+        <FileName>$(IRFDIR)..\src\ECU Abstraction\LED control\sw_ctrl.c</FileName>
         <FileOptios>
          <CompilerDefines>__SAMV71Q21__</CompilerDefines>
          <CompilerOptions>-x c  -mcpu=cortex-m7  -mthumb -mfloat-abi=softfp -mfpu=fpv5-sp-d16 $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME) -fno-builtin-fabs -save-temps=obj -o $(OUTPUTDIR)$(NOEXT).o</CompilerOptions>
         </FileOptios>
+       </File.0>
+       <File.1>
+        <FileName>$(IRFDIR)..\src\ECU Abstraction\LED control\sw_ctrl.h</FileName>
        </File.1>
        <File.2>
-        <FileName>$(IRFDIR)..\src\ECU Abstraction\LED control\sw_ctrl.c</FileName>
+        <FileName>$(IRFDIR)..\src\ECU Abstraction\mem_alloc.c</FileName>
         <FileOptios>
          <CompilerDefines>__SAMV71Q21__</CompilerDefines>
          <CompilerOptions>-x c  -mcpu=cortex-m7  -mthumb -mfloat-abi=softfp -mfpu=fpv5-sp-d16 $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME) -fno-builtin-fabs -save-temps=obj -o $(OUTPUTDIR)$(NOEXT).o</CompilerOptions>
         </FileOptios>
        </File.2>
        <File.3>
-        <FileName>$(IRFDIR)..\src\ECU Abstraction\LED control\sw_ctrl.h</FileName>
+        <FileName>$(IRFDIR)..\src\ECU Abstraction\mem_alloc.h</FileName>
        </File.3>
+       <File.4>
+        <FileName>$(IRFDIR)..\src\ECU Abstraction\mem_alloctypes.h</FileName>
+       </File.4>
+       <File.5>
+        <FileName>$(IRFDIR)..\src\ECU Abstraction\led_ctrl.c</FileName>
+        <FileOptios>
+         <CompilerDefines>__SAMV71Q21__</CompilerDefines>
+         <CompilerOptions>-x c  -mcpu=cortex-m7  -mthumb -mfloat-abi=softfp -mfpu=fpv5-sp-d16 $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME) -fno-builtin-fabs -save-temps=obj -o $(OUTPUTDIR)$(NOEXT).o</CompilerOptions>
+        </FileOptios>
+       </File.5>
+       <File.6>
+        <FileName>$(IRFDIR)..\src\ECU Abstraction\led_ctrl.h</FileName>
+       </File.6>
       </LinkGroup.5>
       <LinkGroup.6>
        <LinkGroupName>Commons</LinkGroupName>

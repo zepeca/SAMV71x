@@ -20,11 +20,13 @@
 /** Task scheduler definitions */
 #include    "app_scheduler.h"
 /** LED control definitions */ 
-#include    "led_ctrl.h" 
+#include    "ECU Abstraction/led_ctrl.h" 
 /** SW control definitions */ 
-#include    "sw_ctrl.h" 
+#include    "ECU Abstraction/sw_ctrl.h" 
+/** Memory allocation definitions */ 
+#include    "ECU Abstraction/mem_alloc.h"
 
-#include "chip.h"
+#include    "chip.h"
 
 /*~~~~~~  Local definitions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
@@ -43,6 +45,7 @@
  */
 extern int main( void )
 {
+  MemReturnType AddrActual = 0;
   /* Disable watchdog */
 	//vfnWdtCtrl_Disable();
 	WDT_Disable( WDT ) ;
@@ -57,7 +60,8 @@ extern int main( void )
 	/*configure buttons*/
   	vfnConfigureButtons() ;
 
-	/* carlosa Mem_Alloc to-do - call the Mem_Alloc function*/
+	/* Mem_Alloc to do- call the Mem_Alloc function needed times*/
+  AddrActual = Mem_Alloc(1);
 
 	/* Configure Non-preemtive scheduler */
 	vfnScheduler_Init();
