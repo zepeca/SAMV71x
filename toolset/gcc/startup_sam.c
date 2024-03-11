@@ -32,9 +32,11 @@
 #include "ECU Abstraction/mem_alloc.h"
 
 /* carlosa Mem_Alloc - defines for testing the heap_mem_section*/
-#define heap_mem_section_TEST 1   /*1 for enabling the testing the heap_mem_section*/
-#define heap_mem_section_TEST_VALUE 0x04030201
+//define heap_mem_section_TEST  /*comment for disabling the heap_mem_section test code*/
 
+#ifdef heap_mem_section_TEST
+#define heap_mem_section_TEST_VALUE 0x04030201
+#endif /*heap_mem_section_TEST*/
 
 /* Initialize segments */
 extern uint32_t _sfixed;
@@ -358,7 +360,7 @@ void Reset_Handler(void)
 		}
 
 		/* carlosa Mem_Alloc - if heap_mem_section testing strategy using the zero segment clear strat*/
-#if heap_mem_section_TEST
+#ifdef heap_mem_section_TEST
 		for(pDest = &_heap_mem_start; pDest < &_heap_mem_end;){
 			*pDest++ = heap_mem_section_TEST_VALUE;
 		}

@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.c": "c",
+        "board.h": "c",
+        "mem_alloc.h": "c",
+        "initializer_list": "c"
+    }
+}

@@ -28,10 +28,11 @@
 
 #include    "chip.h"
 
+#include "stdint.h"
+
 /*~~~~~~  Local definitions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 /*~~~~~~  Global variables ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-
 
 /*~~~~~~  Local functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
@@ -45,7 +46,8 @@
  */
 extern int main( void )
 {
-  MemReturnType AddrActual = 0;
+	uint32_t* AddrActual = 0;
+
   /* Disable watchdog */
 	//vfnWdtCtrl_Disable();
 	WDT_Disable( WDT ) ;
@@ -60,8 +62,10 @@ extern int main( void )
 	/*configure buttons*/
   	vfnConfigureButtons() ;
 
-	/* Mem_Alloc to do- call the Mem_Alloc function needed times*/
-  AddrActual = Mem_Alloc(1);
+	/* memory reservation*/
+	AddrActual = Mem_Alloc(5);
+	AddrActual = Mem_Alloc(10);
+	AddrActual = Mem_Alloc(3);
 
 	/* Configure Non-preemtive scheduler */
 	vfnScheduler_Init();

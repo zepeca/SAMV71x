@@ -8,4 +8,4 @@
 #include "mem_alloctypes.h"
 
 void Mem_Init(void);
-MemReturnType Mem_Alloc(MemSizeType);
+uint32_t* Mem_Alloc(uint16_t);
