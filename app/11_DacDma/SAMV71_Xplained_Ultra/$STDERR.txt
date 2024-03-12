@@ -1,0 +1,5 @@
+Y:\Win_Comun\Iteso\SAMV71x\app\11_DacDma\src\Objects\MemAlloc.o:(.data+0x0): undefined reference to `_heap_mem_start'
+Y:\Win_Comun\Iteso\SAMV71x\app\11_DacDma\src\Objects\MemAlloc.o:(.data+0x4): undefined reference to `_heap_mem_end'
+Y:\Win_Comun\Iteso\SAMV71x\app\11_DacDma\src\Objects\MemAlloc.o:(.data+0x8): undefined reference to `_heap_mem_start'
+collect2.exe: error: ld returned 1 exit status
+
