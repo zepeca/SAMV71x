@@ -65,7 +65,7 @@ extern int main( void )
 	/* memory reservation*/
 	AddrActual = Mem_Alloc(5);
 	AddrActual = Mem_Alloc(10);
-	AddrActual = Mem_Alloc(3);
+	AddrActual = Mem_Alloc(1000);
 
 	/* Configure Non-preemtive scheduler */
 	vfnScheduler_Init();

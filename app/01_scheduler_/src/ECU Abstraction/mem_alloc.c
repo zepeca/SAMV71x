@@ -57,11 +57,13 @@ uint32_t* Mem_Alloc (uint16_t size){
         memset(lou32mem_alloc_cur_address, lou8mem_alloc_test_value, (size_t) size);
         lou8mem_alloc_test_value++;
 #endif
+        /*update return address*/
+        return_addr = lou32mem_alloc_cur_address;
+        
         /*udpate current address*/
         lou32mem_alloc_cur_address = (uint8_t*)lou32mem_alloc_cur_address + size;
 
-        /*update return address*/
-        return_addr = lou32mem_alloc_cur_address;
+
     }
 
     return return_addr;
