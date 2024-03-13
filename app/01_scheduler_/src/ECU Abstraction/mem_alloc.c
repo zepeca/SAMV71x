@@ -60,6 +60,10 @@ uint32_t* Mem_Alloc (uint16_t size){
         /*update return address*/
         return_addr = lou32mem_alloc_cur_address;
         
+        /* align size to 32 bits */
+        
+        size = (size + 3) & ~3;
+        
         /*udpate current address*/
         lou32mem_alloc_cur_address = (uint8_t*)lou32mem_alloc_cur_address + size;
 
