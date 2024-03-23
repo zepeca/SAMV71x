@@ -5,7 +5,7 @@
    <VersionLow>1</VersionLow>
   </REG_HEADER>
   <REG_ROOT>
-   <RegVer>1279262720</RegVer>
+   <RegVer>1259470856</RegVer>
    <Project>
     <CompilerType>0</CompilerType>
     <GlobalOptions>
@@ -37,7 +37,7 @@
      <DF_Start></DF_Start>
      <DF_Valid>True</DF_Valid>
      <DisplayParameters>0</DisplayParameters>
-     <ExecutableFileName>FoatingPoint.elf</ExecutableFileName>
+     <ExecutableFileName>DacDma.elf</ExecutableFileName>
      <ExternalMake>0</ExternalMake>
      <ExternalMakeFile></ExternalMakeFile>
      <ExternalMakeFileParameters></ExternalMakeFileParameters>
@@ -45,7 +45,7 @@
      <LinkerRelPath>$(CMPDIR)bin\arm-none-eabi-gcc.exe</LinkerRelPath>
      <LInpExtensions>o;a</LInpExtensions>
      <LnkAdditionalOutExt></LnkAdditionalOutExt>
-     <ParallelBuild>0</ParallelBuild>
+     <NewInvoke>1</NewInvoke>
      <PathSeparator>\</PathSeparator>
      <RootDir></RootDir>
      <RunAfterAsm></RunAfterAsm>
@@ -272,6 +272,26 @@
          <CompilerOptions>-x c  -mcpu=cortex-m7  -mthumb -mfloat-abi=softfp -mfpu=fpv5-sp-d16 $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME) -fno-builtin-fabs</CompilerOptions>
         </FileOptios>
        </File.1>
+       <File.10>
+        <FileName>$(IRFDIR)..\..\..\hal\libchip_samv7\source\xdmac.c</FileName>
+        <FileOptios>
+         <CompilerDefines>__SAMV71Q21__</CompilerDefines>
+         <CompilerOptions>-x c  -mcpu=cortex-m7  -mthumb -mfloat-abi=softfp -mfpu=fpv5-sp-d16 $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME) -fno-builtin-fabs</CompilerOptions>
+        </FileOptios>
+       </File.10>
+       <File.11>
+        <FileName>$(IRFDIR)..\..\..\hal\libchip_samv7\include\xdmac.h</FileName>
+       </File.11>
+       <File.12>
+        <FileName>$(IRFDIR)..\..\..\hal\libchip_samv7\source\xdma_hardware_interface.c</FileName>
+        <FileOptios>
+         <CompilerDefines>__SAMV71Q21__</CompilerDefines>
+         <CompilerOptions>-x c  -mcpu=cortex-m7  -mthumb -mfloat-abi=softfp -mfpu=fpv5-sp-d16 $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME) -fno-builtin-fabs</CompilerOptions>
+        </FileOptios>
+       </File.12>
+       <File.13>
+        <FileName>$(IRFDIR)..\..\..\hal\libchip_samv7\include\xdma_hardware_interface.h</FileName>
+       </File.13>
        <File.2>
         <FileName>$(IRFDIR)..\..\..\hal\libchip_samv7\source\pmc.c</FileName>
         <FileOptios>
@@ -314,6 +334,16 @@
          <CompilerOptions>-x c  -mcpu=cortex-m7  -mthumb -mfloat-abi=softfp -mfpu=fpv5-sp-d16 $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME) -fno-builtin-fabs</CompilerOptions>
         </FileOptios>
        </File.7>
+       <File.8>
+        <FileName>$(IRFDIR)..\..\..\hal\libchip_samv7\source\xdmad.c</FileName>
+        <FileOptios>
+         <CompilerDefines>__SAMV71Q21__</CompilerDefines>
+         <CompilerOptions>-x c  -mcpu=cortex-m7  -mthumb -mfloat-abi=softfp -mfpu=fpv5-sp-d16 $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME) -fno-builtin-fabs</CompilerOptions>
+        </FileOptios>
+       </File.8>
+       <File.9>
+        <FileName>$(IRFDIR)..\..\..\hal\libchip_samv7\include\xdmad.h</FileName>
+       </File.9>
       </LinkGroup.3>
       <LinkGroup.4>
        <LinkGroupName>Asw</LinkGroupName>
@@ -369,15 +399,39 @@
          <CompilerOptions>-x c  -mcpu=cortex-m7  -mthumb -mfloat-abi=softfp -mfpu=fpv5-sp-d16 $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME) -fno-builtin-fabs</CompilerOptions>
         </FileOptios>
        </File.2>
+       <File.3>
+        <FileName>$(IRFDIR)..\src\Bsw\Mcal\IO\Dac\dac.c</FileName>
+        <FileOptios>
+         <CompilerDefines>__SAMV71Q21__</CompilerDefines>
+         <CompilerOptions>-x c  -mcpu=cortex-m7  -mthumb -mfloat-abi=softfp -mfpu=fpv5-sp-d16 $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME) -fno-builtin-fabs</CompilerOptions>
+        </FileOptios>
+       </File.3>
+       <File.4>
+        <FileName>$(IRFDIR)..\src\Bsw\Mcal\IO\Dac\dac.h</FileName>
+       </File.4>
+       <File.5>
+        <FileName>$(IRFDIR)..\src\Bsw\Mcal\IO\Dac\dac_dma.c</FileName>
+        <FileOptios>
+         <CompilerDefines>__SAMV71Q21__</CompilerDefines>
+         <CompilerOptions>-x c  -mcpu=cortex-m7  -mthumb -mfloat-abi=softfp -mfpu=fpv5-sp-d16 $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME) -fno-builtin-fabs</CompilerOptions>
+        </FileOptios>
+       </File.5>
+       <File.6>
+        <FileName>$(IRFDIR)..\src\Bsw\Mcal\IO\Dac\dac_dma.h</FileName>
+       </File.6>
+       <File.7>
+        <FileName>$(IRFDIR)..\src\Bsw\Mcal\IO\Dac\ecg_data.c</FileName>
+        <FileOptios>
+         <CompilerDefines>__SAMV71Q21__</CompilerDefines>
+         <CompilerOptions>-x c  -mcpu=cortex-m7  -mthumb -mfloat-abi=softfp -mfpu=fpv5-sp-d16 $(DEFINES) $(INCLUDES)  -g3 -c -I $(IRFDIR) -o $(NOEXT).o $(EDNAME) -fno-builtin-fabs</CompilerOptions>
+        </FileOptios>
+       </File.7>
+       <File.8>
+        <FileName>$(IRFDIR)..\src\Bsw\Mcal\IO\Dac\ecg_data.h</FileName>
+       </File.8>
       </LinkGroup.5>
       <LinkGroup.6>
        <LinkGroupName>Objects</LinkGroupName>
-       <File.0>
-        <FileName>$(IRFDIR)..\src\Objects\MemAlloc.o</FileName>
-       </File.0>
-       <File.1>
-        <FileName>$(IRFDIR)..\src\Objects\SchM.o</FileName>
-       </File.1>
       </LinkGroup.6>
       <TargetOptios>
        <AsmArgFile></AsmArgFile>

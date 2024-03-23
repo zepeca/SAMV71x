@@ -18,7 +18,7 @@
 /** Main group of includes for board definitions, chip definitions and type definitions */
 #include    "Std_Types.h"
 /** Task scheduler definitions */
-#include    "SchM.h"
+//#include    "SchM.h"
 /** LED control definitions */ 
 #include    "Led_Ctrl.h"
 /** Watchdog control function prototypes definitions */
@@ -103,11 +103,11 @@ extern int main( void )
 	
   /* Scheduler Inititalization */
 	printf( "-- Scheduler Initialization --\n\r" ) ;
-	SchM_Init(ScheduleConfig);
+	/*SchM_Init(ScheduleConfig);*/ /*carlosa removed due to compilation issues scheduler will not be used in this project*/
 	
 	/* Should never reach this code */
 	for(;;)
     {
-		printf( "-- Unexpected Error at Scheduler Initialization --\n\r" ) ;
+		printf( "-- loop after main --\n\r" ) ;
 	}
 }

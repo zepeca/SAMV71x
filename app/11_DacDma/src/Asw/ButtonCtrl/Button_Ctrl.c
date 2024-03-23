@@ -63,7 +63,7 @@ static const Pin PinSW0 = PIN_SW0;
 static void SW0_Handler( const Pin* pPin )
 {
 	if ( pPin == &PinSW0 ) {
-		SchM_ActivateTask(TASK_SW0);
+		/*SchM_ActivateTask(TASK_SW0);*/ /*carlosa removed due to compilation issues scheduler will not be used in this project*/
 	}
 }
 
