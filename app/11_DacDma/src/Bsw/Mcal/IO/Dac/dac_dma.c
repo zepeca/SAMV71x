@@ -103,15 +103,15 @@ static uint8_t _DacConfigureDmaChannels( DacDma* pDacd )
 	/* Allocate a DMA channel for DAC0/1 TX. */
 	dacDmaTxChannel = 
 		XDMAD_AllocateChannel( pDacd->pXdmad, XDMAD_TRANSFER_MEMORY, ID_DACC);
-	if ( dacDmaTxChannel == XDMAD_ALLOC_FAILED ) {
+	if ( dacDmaTxChannel == XDMAD_ALLOC_FAILED ){
 		return DAC_ERROR;
-	}
-
-	if ( XDMAD_PrepareChannel( pDacd->pXdmad, dacDmaTxChannel )) 
-		return DAC_ERROR;
-	return DAC_OK;
 }
 
+	if ( XDMAD_PrepareChannel( pDacd->pXdmad, dacDmaTxChannel )){
+	  return DAC_ERROR;
+	  return DAC_OK;
+}
+}
 
 /**
  * \brief Configure the DMA source and destination with Linker List mode.
@@ -120,52 +120,50 @@ static uint8_t _DacConfigureDmaChannels( DacDma* pDacd )
  * \param size length of buffer
  */
 
+
+/**************************************************************CESAR TO DO************************/
 static uint8_t _Dac_configureLinkList(Dacc *pDacHw, void *pXdmad, DacCmd *pCommand)
 {
-	uint32_t xdmaCndc;
-	sXdmadCfg xdmadCfg;
-	uint32_t * pBuffer;
-	/* Setup TX Link List */
-	uint32_t i;		// Modified to count all 1024 data buffer size (original uint8_t)
-	pBuffer = (uint32_t *)pCommand->pTxBuff;
-	for(i = 0; i < pCommand->TxSize; i++){
-		dmaWriteLinkList[i].mbr_ubc = XDMA_UBC_NVIEW_NDV1 
-									| XDMA_UBC_NDE_FETCH_EN
-									| XDMA_UBC_NSEN_UPDATED
-									| XDMAC_CUBC_UBLEN(4);
-		dmaWriteLinkList[i].mbr_sa = (uint32_t)pBuffer;
-		dmaWriteLinkList[i].mbr_da = 
-			(uint32_t)&(pDacHw->DACC_CDR[pCommand->dacChannel]);
-		if ( i == (pCommand->TxSize - 1 )) {
-			if (pCommand->loopback) {
-				dmaWriteLinkList[i].mbr_nda = (uint32_t)&dmaWriteLinkList[0];
-			} else {
-				dmaWriteLinkList[i].mbr_nda = 0;
-			}
-		} else {
-			dmaWriteLinkList[i].mbr_nda = (uint32_t)&dmaWriteLinkList[i+1];
-		}
-		pBuffer++;
-	}
-	xdmadCfg.mbr_cfg = XDMAC_CC_TYPE_PER_TRAN 
-					 | XDMAC_CC_MBSIZE_SINGLE 
-					 | XDMAC_CC_DSYNC_MEM2PER 
-					 | XDMAC_CC_CSIZE_CHK_1 
-					 | XDMAC_CC_DWIDTH_WORD
-					 | XDMAC_CC_SIF_AHB_IF0 
-					 | XDMAC_CC_DIF_AHB_IF1 
-					 | XDMAC_CC_SAM_INCREMENTED_AM 
-					 | XDMAC_CC_DAM_FIXED_AM 
-					 | XDMAC_CC_PERID(
-						XDMAIF_Get_ChannelNumber(ID_DACC, XDMAD_TRANSFER_TX ));
-	xdmaCndc = XDMAC_CNDC_NDVIEW_NDV1 
-			 | XDMAC_CNDC_NDE_DSCR_FETCH_EN 
-			 | XDMAC_CNDC_NDSUP_SRC_PARAMS_UPDATED
-			 | XDMAC_CNDC_NDDUP_DST_PARAMS_UPDATED ;
-	XDMAD_ConfigureTransfer( pXdmad, dacDmaTxChannel, &xdmadCfg, xdmaCndc, 
-			(uint32_t)&dmaWriteLinkList[0], XDMAC_CIE_LIE);
-	return DAC_OK;
+    uint32_t xdmaCndc;
+    sXdmadCfg xdmadCfg;
+    uint32_t *pBuffer = (uint32_t *)pCommand->pTxBuff;
+    uint32_t halfSize = pCommand->TxSize / 2; 
+	  uint32_t i;
+
+    
+ for(uint32_t i = 0; i < 2; i++){
+        dmaWriteLinkList[i].mbr_ubc = XDMA_UBC_NVIEW_NDV1 
+                                    | XDMA_UBC_NDE_FETCH_EN
+                                    | XDMA_UBC_NSEN_UPDATED
+                                    | XDMAC_CUBC_UBLEN(halfSize);
+        dmaWriteLinkList[i].mbr_sa = (uint32_t)pBuffer + (i * halfSize * sizeof(uint32_t));
+        dmaWriteLinkList[i].mbr_da = (uint32_t)&(pDacHw->DACC_CDR[pCommand->dacChannel]);
+        dmaWriteLinkList[i].mbr_nda = (i == 1) ? 0 : (uint32_t)&dmaWriteLinkList[i + 1];
+ }
+
+    xdmadCfg.mbr_cfg = XDMAC_CC_TYPE_PER_TRAN 
+                     | XDMAC_CC_MBSIZE_SINGLE 
+                     | XDMAC_CC_DSYNC_MEM2PER 
+                     | XDMAC_CC_CSIZE_CHK_1 
+                     | XDMAC_CC_DWIDTH_WORD
+                     | XDMAC_CC_SIF_AHB_IF0 
+                     | XDMAC_CC_DIF_AHB_IF1 
+                     | XDMAC_CC_SAM_INCREMENTED_AM 
+                     | XDMAC_CC_DAM_FIXED_AM 
+                     | XDMAC_CC_PERID(XDMAIF_Get_ChannelNumber(ID_DACC, XDMAD_TRANSFER_TX));
+    xdmaCndc = XDMAC_CNDC_NDVIEW_NDV1 
+             | XDMAC_CNDC_NDE_DSCR_FETCH_EN 
+             | XDMAC_CNDC_NDSUP_SRC_PARAMS_UPDATED
+             | XDMAC_CNDC_NDDUP_DST_PARAMS_UPDATED;
+
+    XDMAD_ConfigureTransfer(pXdmad, dacDmaTxChannel, &xdmadCfg, xdmaCndc, 
+                            (uint32_t)&dmaWriteLinkList[0], XDMAC_CIE_LIE);
+
+    return DAC_OK;
 }
+/**********************************************CESAR TO DO*************************************************/
+
+
 
 /*----------------------------------------------------------------------------
  *        Exported functions
