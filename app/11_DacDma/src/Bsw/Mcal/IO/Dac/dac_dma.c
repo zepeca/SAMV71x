@@ -122,24 +122,28 @@ static uint8_t _DacConfigureDmaChannels( DacDma* pDacd )
 
 
 /**************************************************************CESAR TO DO************************/
-static uint8_t _Dac_configureLinkList(Dacc *pDacHw, void *pXdmad, DacCmd *pCommand)
+ static uint8_t _Dac_configureLinkList(Dacc *pDacHw, void *pXdmad, DacCmd *pCommand)
 {
     uint32_t xdmaCndc;
     sXdmadCfg xdmadCfg;
-    uint32_t *pBuffer = (uint32_t *)pCommand->pTxBuff;
-    uint32_t halfSize = pCommand->TxSize / 2; 
-	  uint32_t i;
+    uint32_t *pBuffer;
+    uint32_t i; //reparacion 1-- y definicion en ciclo for para condición i=0;
 
+    pBuffer = (uint32_t *)pCommand->pTxBuff;
     
- for(uint32_t i = 0; i < 2; i++){
+    // Calcula el tamaño de cada mitad del búfer para transmitir.
+    uint32_t halfSize = pCommand->TxSize / 2; //TxSize es divisible por 2.
+
+    // Configuracion de  los 2 descriptores.
+    for(i = 0; i < 2; i++){
         dmaWriteLinkList[i].mbr_ubc = XDMA_UBC_NVIEW_NDV1 
                                     | XDMA_UBC_NDE_FETCH_EN
                                     | XDMA_UBC_NSEN_UPDATED
-                                    | XDMAC_CUBC_UBLEN(halfSize);
+                                    | XDMAC_CUBC_UBLEN(halfSize); //buffer tamano
         dmaWriteLinkList[i].mbr_sa = (uint32_t)pBuffer + (i * halfSize * sizeof(uint32_t));
         dmaWriteLinkList[i].mbr_da = (uint32_t)&(pDacHw->DACC_CDR[pCommand->dacChannel]);
         dmaWriteLinkList[i].mbr_nda = (i == 1) ? 0 : (uint32_t)&dmaWriteLinkList[i + 1];
- }
+}
 
     xdmadCfg.mbr_cfg = XDMAC_CC_TYPE_PER_TRAN 
                      | XDMAC_CC_MBSIZE_SINGLE 

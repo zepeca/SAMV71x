@@ -167,7 +167,7 @@
     </GlobalOptions>
     <Project.0>
      <DefaultTargetName>SAMV71_Sample</DefaultTargetName>
-     <FilterName>GCC</FilterName>
+     <FilterName>Green Hills</FilterName>
      <ProjectName></ProjectName>
      <AdvancedLinkerOptions>
       <AsmCustomFilterName></AsmCustomFilterName>
